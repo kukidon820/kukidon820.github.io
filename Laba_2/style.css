@@ -75,19 +75,19 @@ a:hover::after {
 }
 
 @keyframes bounce {
-  0% { top: 0; height: 50px; }
-  20% { top: 80%; height: 55px; }
-  30% { top: 60%; height: 50px; }
-  40% { top: 80%; height: 52.5px; }
-  50% { top: 70%; height: 50px; }
-  55% { top: 80%; height: 51.25px; }
-  60% { top: 75%; height: 50px; }
-  65% { top: 80%; height: 50.6px; }
-  70% { top: 77.5%; height: 50px; }
-  75% { top: 80%; height: 50.3px; }
-  80% { top: 78.75%; height: 50px; }
-  85% { top: 80%; height: 50.15px; }
-  90% { top: 79.375%; height: 50px; }
-  95% { top: 80%; height: 50.07px; }
-  100% { top: 79.6875%; height: 50px; }
+  0% { top: 0; transform: scaleY(1) scaleX(1); }
+  20% { top: 80%; transform: scaleY(0.6) scaleX(1.2); }
+  30% { top: 60%; transform: scaleY(1) scaleX(1); }
+  40% { top: 80%; transform: scaleY(0.75) scaleX(1.1); }
+  50% { top: 70%; transform: scaleY(1) scaleX(1); }
+  55% { top: 80%; transform: scaleY(0.85) scaleX(1.05); }
+  60% { top: 75%; transform: scaleY(1) scaleX(1); }
+  65% { top: 80%; transform: scaleY(0.92) scaleX(1.03); }
+  70% { top: 77.5%; transform: scaleY(1) scaleX(1); }
+  75% { top: 80%; transform: scaleY(0.96) scaleX(1.02); }
+  80% { top: 78.75%; transform: scaleY(1) scaleX(1); }
+  85% { top: 80%; transform: scaleY(0.98) scaleX(1.01); }
+  90% { top: 79.375%; transform: scaleY(1) scaleX(1); }
+  95% { top: 80%; transform: scaleY(0.99) scaleX(1.005); }
+  100% { top: 79.6875%; transform: scaleY(1) scaleX(1); }
 }
