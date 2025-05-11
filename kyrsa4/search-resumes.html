@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Поиск резюме - JobHub</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+.search-header {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+  color: white;
+  padding: 60px 0;
+}
+
+.search-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-header p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.search-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+}
+
+.search-input-wrapper {
+  flex: 1;
+  position: relative;
+  background-color: white;
+  border-radius: var(--border-radius);
+}
+
+.search-input-wrapper i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 12px 12px 45px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.location-input {
+  max-width: 250px;
+}
+
+.btn-search {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.btn-search:hover {
+  background-color: var(--primary-dark);
+}
+
+.search-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+  margin: 40px 0 60px;
+}
+
+.search-filters {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px var(--shadow-color);
+  padding: 20px;
+  align-self: start;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filter-header h2 {
+  font-size: 1.3rem;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.btn-reset-filters {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-reset-filters:hover {
+  text-decoration: underline;
+}
+
+.filter-group {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filter-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.filter-group h3 {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+}
+
+.checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-item input {
+  margin-right: 10px;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  appearance: none;
+  background-color: var(--background-color);
+  cursor: pointer;
+}
+
+.select-wrapper::after {
+  content: "\f107";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.select-wrapper select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.filter-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.filter-actions button {
+  flex: 1;
+}
+
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.search-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.results-count {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+
+.results-count span {
+  font-weight: 600;
+}
+
+.results-sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.results-sort label {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.results-sort select {
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  background-color: var(--background-color);
+}
+
+.results-sort select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.resume-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.resume-card {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 3px 10px var(--shadow-color);
+  padding: 20px;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.resume-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.resume-card-header {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.resume-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.resume-title {
+  flex: 1;
+}
+
+.resume-title h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  color: var(--text-dark);
+}
+
+.resume-title p {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.resume-location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.resume-salary {
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: right;
+}
+
+.resume-card-body {
+  margin-bottom: 15px;
+}
+
+.resume-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-bottom: 5px;
+}
+
+.info-value {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.resume-description {
+  color: var(--text-color);
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.resume-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.resume-tag {
+  background-color: var(--background-light);
+  color: var(--text-color);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.resume-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+.resume-date {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.resume-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 30px;
+}
+
+.pagination-item,
+.pagination-prev,
+.pagination-next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all var(--transition-speed);
+}
+
+.pagination-item:hover,
+.pagination-prev:hover,
+.pagination-next:hover {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.pagination-item.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.pagination-dots {
+  margin: 0 5px;
+}
+
+.subscription-banner {
+  background-color: var(--background-light);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.subscription-banner h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.subscription-banner p {
+  margin-bottom: 20px;
+  color: var(--text-color);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subscription-banner .btn {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 992px) {
+  .search-content {
+    grid-template-columns: 1fr;
+  }
+
+  .search-filters {
+    position: sticky;
+    top: 20px;
+  }
+
+  .resume-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+  }
+
+  .location-input {
+    max-width: none;
+  }
+
+  .resume-card-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .resume-salary {
+    text-align: center;
+  }
+
+  .resume-card-footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .resume-actions {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .search-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .filter-actions {
+    flex-direction: column;
+  }
+
+  .resume-info {
+    grid-template-columns: 1fr;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+<body>
+<header class="main-header">
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-content">
+        <div class="region-selector">
+          <a href="#" class="region-link">Россия</a>
+          <div class="region-dropdown">
+            <a href="#">Москва</a>
+            <a href="#">Санкт-Петербург</a>
+            <a href="#">Новосибирск</a>
+            <a href="#">Екатеринбург</a>
+            <a href="#">Казань</a>
+            <a href="#">Все города</a>
+          </div>
+        </div>
+        <nav class="top-nav">
+          <ul>
+            <li><a href="job-seekers.html">Соискателям</a></li>
+            <li><a href="employers.html" class="active">Работодателям</a></li>
+          </ul>
+        </nav>
+        <div class="top-services">
+          <a href="ready-resume.html">Готовое резюме</a>
+          <a href="career-consultation.html">Карьерная консультация</a>
+          <div class="services-dropdown">
+            <a href="#" class="services-link">Все сервисы <i class="fas fa-chevron-down"></i></a>
+            <div class="services-menu">
+              <a href="salary.html">Узнать зарплату</a>
+              <a href="career-advice.html">Карьерные советы</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-bar">
+    <div class="container">
+      <div class="main-bar-content">
+        <div class="logo">
+          <a href="index.html">
+            <span class="logo-icon">JH</span>
+            <span class="logo-text">JobHub</span>
+          </a>
+        </div>
+        <div class="auth-buttons">
+          <a href="post-job.html" class="btn btn-outline">Разместить вакансию</a>
+          <a href="login.html" class="btn btn-primary">Войти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="search-header">
+    <div class="container">
+      <h1>Поиск резюме</h1>
+      <p>Найдите подходящих кандидатов для вашей компании</p>
+      <div class="search-form-container">
+        <form class="search-form">
+          <div class="search-input-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Должность, навыки или ключевые слова" class="search-input" id="search-query">
+          </div>
+          <div class="search-input-wrapper location-input">
+            <i class="fas fa-map-marker-alt"></i>
+            <input type="text" placeholder="Город или регион" class="search-input" id="search-location">
+          </div>
+          <button type="submit" class="btn btn-search">Найти</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="search-content">
+      <aside class="search-filters">
+        <div class="filter-header">
+          <h2>Фильтры</h2>
+          <button class="btn-reset-filters">Сбросить все</button>
+        </div>
+
+        <div class="filter-group">
+          <h3>Зарплата</h3>
+          <div class="salary-filter">
+            <div class="form-group">
+              <input type="number" placeholder="от" id="salary-from">
+            </div>
+            <div class="form-group">
+              <input type="number" placeholder="до" id="salary-to">
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3>Опыт работы</h3>
+          <div class="checkbox-list">
+            <label class="checkbox-item">
+              <input type="checkbox" name="experience" value="no_experience">
+              <span>Нет опыта</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="experience" value="1-3">
+              <span>От 1 года до 3 лет</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="experience" value="3-6">
+              <span>От 3 до 6 лет</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="experience" value="6+">
+              <span>Более 6 лет</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3>Возраст</h3>
+          <div class="checkbox-list">
+            <label class="checkbox-item">
+              <input type="checkbox" name="age" value="18-25">
+              <span>18-25 лет</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="age" value="26-35">
+              <span>26-35 лет</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="age" value="36-45">
+              <span>36-45 лет</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="age" value="46+">
+              <span>46+ лет</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3>Образование</h3>
+          <div class="checkbox-list">
+            <label class="checkbox-item">
+              <input type="checkbox" name="education" value="higher">
+              <span>Высшее</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="education" value="incomplete_higher">
+              <span>Неоконченное высшее</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="education" value="secondary">
+              <span>Среднее специальное</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="education" value="secondary_general">
+              <span>Среднее</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3>Тип занятости</h3>
+          <div class="checkbox-list">
+            <label class="checkbox-item">
+              <input type="checkbox" name="employment" value="full">
+              <span>Полная занятость</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="employment" value="part">
+              <span>Частичная занятость</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="employment" value="project">
+              <span>Проектная работа</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="employment" value="internship">
+              <span>Стажировка</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3>График работы</h3>
+          <div class="checkbox-list">
+            <label class="checkbox-item">
+              <input type="checkbox" name="schedule" value="full_day">
+              <span>Полный день</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="schedule" value="shift">
+              <span>Сменный график</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="schedule" value="flexible">
+              <span>Гибкий график</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="schedule" value="remote">
+              <span>Удаленная работа</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3>Дата обновления</h3>
+          <div class="checkbox-list">
+            <label class="checkbox-item">
+              <input type="radio" name="date" value="day" checked>
+              <span>За сутки</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="radio" name="date" value="3days">
+              <span>За 3 дня</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="radio" name="date" value="week">
+              <span>За неделю</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="radio" name="date" value="month">
+              <span>За месяц</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="radio" name="date" value="all">
+              <span>За всё время</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-actions">
+          <button class="btn btn-primary btn-apply-filters">Применить</button>
+          <button class="btn btn-outline btn-reset-filters">Сбросить</button>
+        </div>
+      </aside>
+
+      <div class="search-results">
+        <div class="search-results-header">
+          <div class="results-count">Найдено <span id="results-number">1,234</span> резюме</div>
+          <div class="results-sort">
+            <label for="sort-by">Сортировать по:</label>
+            <select id="sort-by" name="sort-by">
+              <option value="relevance">По релевантности</option>
+              <option value="date">По дате обновления</option>
+              <option value="salary_desc">По убыванию зарплаты</option>
+              <option value="salary_asc">По возрастанию зарплаты</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="resume-list">
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" alt="Фото соискателя" class="resume-photo">
+              <div class="resume-title">
+                <h3>Иванов Иван Иванович</h3>
+                <p>Frontend-разработчик</p>
+                <div class="resume-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Москва</span>
+                </div>
+              </div>
+              <div class="resume-salary">
+                от 120 000 ₽
+              </div>
+            </div>
+            <div class="resume-card-body">
+              <div class="resume-info">
+                <div class="info-item">
+                  <span class="info-label">Возраст</span>
+                  <span class="info-value">28 лет</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Опыт работы</span>
+                  <span class="info-value">4 года</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Образование</span>
+                  <span class="info-value">Высшее</span>
+                </div>
+              </div>
+              <div class="resume-description">
+                <p>Опытный Frontend-разработчик с глубокими знаниями JavaScript, React.js и современных веб-технологий. Имею опыт разработки высоконагруженных веб-приложений и оптимизации производительности.</p>
+              </div>
+              <div class="resume-tags">
+                <span class="resume-tag">JavaScript</span>
+                <span class="resume-tag">React.js</span>
+                <span class="resume-tag">HTML5</span>
+                <span class="resume-tag">CSS3</span>
+                <span class="resume-tag">TypeScript</span>
+                <span class="resume-tag">Redux</span>
+              </div>
+            </div>
+            <div class="resume-card-footer">
+              <div class="resume-date">
+                Обновлено: 15 марта 2024
+              </div>
+              <div class="resume-actions">
+                <button class="btn btn-outline btn-sm">Сохранить</button>
+                <button class="btn btn-primary btn-sm">Пригласить</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" alt="Фото соискателя" class="resume-photo">
+              <div class="resume-title">
+                <h3>Петрова Екатерина Сергеевна</h3>
+                <p>Менеджер по маркетингу</p>
+                <div class="resume-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Санкт-Петербург</span>
+                </div>
+              </div>
+              <div class="resume-salary">
+                90 000 — 120 000 ₽
+              </div>
+            </div>
+            <div class="resume-card-body">
+              <div class="resume-info">
+                <div class="info-item">
+                  <span class="info-label">Возраст</span>
+                  <span class="info-value">32 года</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Опыт работы</span>
+                  <span class="info-value">7 лет</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Образование</span>
+                  <span class="info-value">Высшее</span>
+                </div>
+              </div>
+              <div class="resume-description">
+                <p>Опытный маркетолог с фокусом на digital-маркетинг. Имею опыт разработки и реализации комплексных маркетинговых стратегий, управления командой и бюджетом. Успешно запустила несколько продуктов на рынок.</p>
+              </div>
+              <div class="resume-tags">
+                <span class="resume-tag">Digital-маркетинг</span>
+                <span class="resume-tag">SMM</span>
+                <span class="resume-tag">SEO</span>
+                <span class="resume-tag">Контекстная реклама</span>
+                <span class="resume-tag">Аналитика</span>
+              </div>
+            </div>
+            <div class="resume-card-footer">
+              <div class="resume-date">
+                Обновлено: 14 марта 2024
+              </div>
+              <div class="resume-actions">
+                <button class="btn btn-outline btn-sm">Сохранить</button>
+                <button class="btn btn-primary btn-sm">Пригласить</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" alt="Фото соискателя" class="resume-photo">
+              <div class="resume-title">
+                <h3>Смирнов Алексей Дмитриевич</h3>
+                <p>Бухгалтер</p>
+                <div class="resume-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Москва</span>
+                </div>
+              </div>
+              <div class="resume-salary">
+                70 000 — 90 000 ₽
+              </div>
+            </div>
+            <div class="resume-card-body">
+              <div class="resume-info">
+                <div class="info-item">
+                  <span class="info-label">Возраст</span>
+                  <span class="info-value">41 год</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Опыт работы</span>
+                  <span class="info-value">15 лет</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Образование</span>
+                  <span class="info-value">Высшее</span>
+                </div>
+              </div>
+              <div class="resume-description">
+                <p>Профессиональный бухгалтер с большим опытом работы. Специализируюсь на ведении бухгалтерского и налогового учета, подготовке и сдаче отчетности, расчете заработной платы.</p>
+              </div>
+              <div class="resume-tags">
+                <span class="resume-tag">1С</span>
+                <span class="resume-tag">Бухгалтерия</span>
+                <span class="resume-tag">Налоговый учет</span>
+                <span class="resume-tag">ОСНО</span>
+                <span class="resume-tag">УСН</span>
+              </div>
+            </div>
+            <div class="resume-card-footer">
+              <div class="resume-date">
+                Обновлено: 12 марта 2024
+              </div>
+              <div class="resume-actions">
+                <button class="btn btn-outline btn-sm">Сохранить</button>
+                <button class="btn btn-primary btn-sm">Пригласить</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Фото соискателя" class="resume-photo">
+              <div class="resume-title">
+                <h3>Козлова Анна Александровна</h3>
+                <p>HR-менеджер</p>
+                <div class="resume-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Москва</span>
+                </div>
+              </div>
+              <div class="resume-salary">
+                80 000 — 110 000 ₽
+              </div>
+            </div>
+            <div class="resume-card-body">
+              <div class="resume-info">
+                <div class="info-item">
+                  <span class="info-label">Возраст</span>
+                  <span class="info-value">29 лет</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Опыт работы</span>
+                  <span class="info-value">5 лет</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Образование</span>
+                  <span class="info-value">Высшее</span>
+                </div>
+              </div>
+              <div class="resume-description">
+                <p>HR-менеджер с опытом работы в IT-компаниях. Занимаюсь полным циклом подбора персонала, адаптацией новых сотрудников, развитием корпоративной культуры и HR-брендингом.</p>
+              </div>
+              <div class="resume-tags">
+                <span class="resume-tag">Подбор персонала</span>
+                <span class="resume-tag">Адаптация</span>
+                <span class="resume-tag">HR-аналитика</span>
+                <span class="resume-tag">Кадровое делопроизводство</span>
+              </div>
+            </div>
+            <div class="resume-card-footer">
+              <div class="resume-date">
+                Обновлено: 10 марта 2024
+              </div>
+              <div class="resume-actions">
+                <button class="btn btn-outline btn-sm">Сохранить</button>
+                <button class="btn btn-primary btn-sm">Пригласить</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pagination">
+          <a href="#" class="pagination-prev disabled"><i class="fas fa-chevron-left"></i></a>
+          <a href="#" class="pagination-item active">1</a>
+          <a href="#" class="pagination-item">2</a>
+          <a href="#" class="pagination-item">3</a>
+          <a href="#" class="pagination-item">4</a>
+          <a href="#" class="pagination-item">5</a>
+          <span class="pagination-dots">...</span>
+          <a href="#" class="pagination-item">42</a>
+          <a href="#" class="pagination-next"><i class="fas fa-chevron-right"></i></a>
+        </div>
+
+        <div class="subscription-banner">
+          <h2>Получите доступ к базе резюме</h2>
+          <p>Оформите подписку, чтобы просматривать контактные данные соискателей и приглашать их на собеседование</p>
+          <a href="employer-services.html" class="btn btn-primary">Узнать о тарифах</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="logo-icon">JH</span>
+        <span class="logo-text">JobHub</span>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Соискателям</h4>
+          <ul>
+            <li><a href="search-jobs.html">Поиск вакансий</a></li>
+            <li><a href="create-resume.html">Создать резюме</a></li>
+            <li><a href="career-advice.html">Карьерные советы</a></li>
+            <li><a href="salary.html">Узнать зарплату</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Работодателям</h4>
+          <ul>
+            <li><a href="post-job.html">Разместить вакансию</a></li>
+            <li><a href="search-resumes.html">Поиск резюме</a></li>
+            <li><a href="employer-services.html">Услуги и цены</a></li>
+            <li><a href="employer-help.html">Помощь</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>JobHub</h4>
+          <ul>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="terms.html">Пользовательское соглашение</a></li>
+            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Приложение</h4>
+          <div class="app-buttons">
+            <a href="#" class="app-button">
+              <i class="fab fa-apple"></i>
+              <span>App Store</span>
+            </a>
+            <a href="#" class="app-button">
+              <i class="fab fa-google-play"></i>
+              <span>Google Play</span>
+            </a>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2023 JobHub. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Reset filters
+  const resetButtons = document.querySelectorAll('.btn-reset-filters');
+
+  resetButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Reset checkboxes and radio buttons
+      document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+        if (input.name === 'date' && input.value === 'day') {
+          input.checked = true;
+        } else if (input.type === 'checkbox') {
+          input.checked = false;
+        } else if (input.type === 'radio' && input.name !== 'date') {
+          input.checked = false;
+        }
+      });
+
+      // Reset inputs
+      document.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
+        input.value = '';
+      });
+    });
+  });
+
+  // Apply filters
+  const applyButton = document.querySelector('.btn-apply-filters');
+
+  if (applyButton) {
+    applyButton.addEventListener('click', () => {
+      // Simulate loading
+      const searchResults = document.querySelector('.search-results');
+
+      if (searchResults) {
+        // Create loading overlay
+        const loadingOverlay = document.createElement('div');
+        loadingOverlay.className = 'loading-overlay';
+        loadingOverlay.innerHTML = '<div class="loading-spinner"></div>';
+
+        searchResults.appendChild(loadingOverlay);
+
+        // Add CSS for loading
+        const style = document.createElement('style');
+        style.textContent = `
+          .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+          }
+
+          .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+          }
+
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `;
+        document.head.appendChild(style);
+
+        // Remove loading after 1 second
+        setTimeout(() => {
+          loadingOverlay.remove();
+
+          // Update results count (simulated)
+          const resultsNumber = document.getElementById('results-number');
+          if (resultsNumber) {
+            resultsNumber.textContent = '856';
+          }
+
+          // Close filters on mobile
+          if (window.innerWidth <= 992) {
+            const searchFilters = document.querySelector('.search-filters');
+            const toggleButton = document.querySelector('.filter-toggle');
+
+            if (searchFilters && toggleButton) {
+              searchFilters.classList.add('filters-hidden');
+              toggleButton.classList.remove('active');
+              toggleButton.innerHTML = '<i class="fas fa-filter"></i> Фильтры';
+            }
+          }
+        }, 1000);
+      }
+    });
+  }
+
+  // Invite buttons
+  const inviteButtons = document.querySelectorAll('.resume-actions .btn-primary');
+
+  inviteButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Check if user is logged in and has subscription
+      const isLoggedIn = false; // This would be determined by your authentication system
+      const hasSubscription = false; // This would be determined by your subscription system
+
+      if (!isLoggedIn) {
+        if (confirm('Для приглашения кандидата необходимо войти в систему. Перейти на страницу входа?')) {
+          window.location.href = 'login.html?redirect=' + encodeURIComponent(window.location.href);
+        }
+      } else if (!hasSubscription) {
+        if (confirm('Для приглашения кандидата необходимо оформить подписку. Перейти к тарифам?')) {
+          window.location.href = 'employer-services.html';
+        }
+      } else {
+        // Show invitation form or modal
+        alert('Форма приглашения кандидата');
+      }
+    });
+  });
+
+  // Save buttons
+  const saveButtons = document.querySelectorAll('.resume-actions .btn-outline');
+
+  saveButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Check if user is logged in
+      const isLoggedIn = false; // This would be determined by your authentication system
+
+      if (!isLoggedIn) {
+        if (confirm('Для сохранения резюме необходимо войти в систему. Перейти на страницу входа?')) {
+          window.location.href = 'login.html?redirect=' + encodeURIComponent(window.location.href);
+        }
+      } else {
+        // Toggle saved state
+        if (button.classList.contains('saved')) {
+          button.classList.remove('saved');
+          button.innerHTML = 'Сохранить';
+          alert('Резюме удалено из сохраненных');
+        } else {
+          button.classList.add('saved');
+          button.innerHTML = '<i class="fas fa-check"></i> Сохранено';
+          alert('Резюме добавлено в сохраненные');
+        }
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

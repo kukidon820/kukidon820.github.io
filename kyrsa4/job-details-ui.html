@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дизайнер интерфейсов - ООО "ДизайнПро" - JobHub</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="job-details.css">
+</head>
+<body>
+  <header class="main-header">
+    <!-- Header content same as other pages -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar-content">
+          <div class="region-selector">
+            <a href="#" class="region-link">Россия</a>
+            <div class="region-dropdown">
+              <a href="#">Москва</a>
+              <a href="#">Санкт-Петербург</a>
+              <a href="#">Новосибирск</a>
+              <a href="#">Екатеринбург</a>
+              <a href="#">Казань</a>
+              <a href="#">Все города</a>
+            </div>
+          </div>
+          <nav class="top-nav">
+            <ul>
+              <li><a href="job-seekers.html" class="active">Соискателям</a></li>
+              <li><a href="employers.html">Работодателям</a></li>
+            </ul>
+          </nav>
+          <div class="top-services">
+            <a href="ready-resume.html">Готовое резюме</a>
+            <a href="career-consultation.html">Карьерная консультация</a>
+            <div class="services-dropdown">
+              <a href="#" class="services-link">Все сервисы <i class="fas fa-chevron-down"></i></a>
+              <div class="services-menu">
+                <a href="salary.html">Узнать зарплату</a>
+                <a href="career-advice.html">Карьерные советы</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-bar">
+      <div class="container">
+        <div class="main-bar-content">
+          <div class="logo">
+            <a href="index.html">
+              <span class="logo-icon">JH</span>
+              <span class="logo-text">JobHub</span>
+            </a>
+          </div>
+          <div class="auth-buttons">
+            <a href="create-resume.html" class="btn btn-outline">Создать резюме</a>
+            <a href="login.html" class="btn btn-primary">Войти</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">Главная</a>
+        <span class="separator"><i class="fas fa-chevron-right"></i></span>
+        <a href="search-jobs.html">Вакансии</a>
+        <span class="separator"><i class="fas fa-chevron-right"></i></span>
+        <a href="search-jobs.html?category=design">Дизайн</a>
+        <span class="separator"><i class="fas fa-chevron-right"></i></span>
+        <span class="current">Дизайнер интерфейсов</span>
+      </div>
+
+      <div class="job-details-container">
+        <div class="job-details-main">
+          <div class="job-header">
+            <div class="job-title-section">
+              <h1>Дизайнер интерфейсов</h1>
+              <div class="job-meta">
+                <span class="job-date">Опубликовано: 11 июня 2023</span>
+                <span class="job-views"><i class="fas fa-eye"></i> 256 просмотров</span>
+              </div>
+              <div class="salary-badge">90 000 — 120 000 ₽</div>
+            </div>
+            <div class="company-info">
+              <img src="https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Логотип ООО ДизайнПро" class="company-logo">
+              <div class="company-details">
+                <h2>ООО "ДизайнПро"</h2>
+                <p class="company-location"><i class="fas fa-map-marker-alt"></i> Санкт-Петербург</p>
+                <div class="company-rating">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <span class="rating-value">4.6</span>
+                  <a href="" class="reviews-link">92 отзыва</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-actions">
+            <button class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> Откликнуться</button>
+            <button class="btn btn-outline btn-lg"><i class="far fa-heart"></i> В избранное</button>
+            <div class="share-dropdown">
+              <button class="btn btn-outline"><i class="fas fa-share-alt"></i> Поделиться</button>
+              <div class="share-options">
+                <a href="#" class="share-option"><i class="fab fa-vk"></i> ВКонтакте</a>
+                <a href="#" class="share-option"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="#" class="share-option"><i class="fas fa-envelope"></i> Email</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-highlights">
+            <div class="highlight-item">
+              <div class="highlight-icon"><i class="fas fa-briefcase"></i></div>
+              <div class="highlight-content">
+                <h3>Тип занятости</h3>
+                <p>Полная занятость</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon"><i class="fas fa-clock"></i></div>
+              <div class="highlight-content">
+                <h3>График работы</h3>
+                <p>Гибкий график</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon"><i class="fas fa-user-graduate"></i></div>
+              <div class="highlight-content">
+                <h3>Опыт работы</h3>
+                <p>От 2 лет</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon"><i class="fas fa-building"></i></div>
+              <div class="highlight-content">
+                <h3>Тип работы</h3>
+                <p>Офис / Гибрид</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-description">
+            <h2>Описание вакансии</h2>
+            <p>ООО "ДизайнПро" - креативная студия дизайна, специализирующаяся на разработке пользовательских интерфейсов для веб-сервисов и мобильных приложений. Мы ищем талантливого дизайнера интерфейсов для работы над интересными проектами.</p>
+
+            <h3>Обязанности:</h3>
+            <ul>
+              <li>Разработка пользовательских интерфейсов для веб-сервисов и мобильных приложений</li>
+              <li>Создание прототипов и макетов</li>
+              <li>Участие в проектировании UX</li>
+              <li>Разработка дизайн-систем и компонентов</li>
+              <li>Создание интерактивных прототипов</li>
+              <li>Взаимодействие с командой разработчиков</li>
+              <li>Участие в обсуждении проектов с клиентами</li>
+              <li>Поддержка и развитие существующих проектов</li>
+            </ul>
+
+            <h3>Требования:</h3>
+            <ul>
+              <li>Опыт работы UI/UX дизайнером от 2 лет</li>
+              <li>Уверенное владение Figma, Adobe XD</li>
+              <li>Опыт создания прототипов</li>
+              <li>Понимание принципов UI/UX дизайна</li>
+              <li>Знание современных тенденций в дизайне интерфейсов</li>
+              <li>Умение работать в команде</li>
+              <li>Внимание к деталям</li>
+              <li>Портфолио с примерами работ</li>
+            </ul>
+
+            <h3>Будет плюсом:</h3>
+            <ul>
+              <li>Опыт работы с дизайн-системами</li>
+              <li>Базовые знания HTML/CSS</li>
+              <li>Опыт работы с анимацией интерфейсов</li>
+              <li>Знание принципов доступности (accessibility)</li>
+              <li>Опыт проведения пользовательских исследований</li>
+            </ul>
+
+            <h3>Мы предлагаем:</h3>
+            <ul>
+              <li>Конкурентную заработную плату от 90 000 до 120 000 рублей (в зависимости от опыта и навыков)</li>
+              <li>Гибкий график работы (возможность работать удаленно 2-3 дня в неделю)</li>
+              <li>Официальное трудоустройство по ТК РФ</li>
+              <li>Современный офис в центре Санкт-Петербурга</li>
+              <li>Профессиональное развитие и обучение</li>
+              <li>Дружный коллектив и творческую атмосферу</li>
+              <li>Корпоративные мероприятия</li>
+              <li>Возможность работать над интересными проектами для крупных клиентов</li>
+            </ul>
+          </div>
+
+          <div class="job-skills">
+            <h2>Ключевые навыки</h2>
+            <div class="skills-list">
+              <span class="skill-tag">UI/UX</span>
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">Adobe XD</span>
+              <span class="skill-tag">Прототипирование</span>
+              <span class="skill-tag">Дизайн-системы</span>
+              <span class="skill-tag">Мобильные приложения</span>
+              <span class="skill-tag">Веб-дизайн</span>
+              <span class="skill-tag">Интерфейсы</span>
+            </div>
+          </div>
+
+          <div class="job-location">
+            <h2>Адрес</h2>
+            <p><i class="fas fa-map-marker-alt"></i> Санкт-Петербург, Невский проспект, д. 55, БЦ "Невский Плаза"</p>
+            <div class="map-container">
+              <img src="https://maps.googleapis.com/maps/api/staticmap?center=Saint-Petersburg,Russia&zoom=14&size=800x300&markers=color:red%7CSaint-Petersburg,Russia&key=YOUR_API_KEY" alt="Карта расположения офиса" class="location-map">
+            </div>
+          </div>
+
+          <div class="job-actions bottom">
+            <button class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> Откликнуться</button>
+            <button class="btn btn-outline btn-lg"><i class="far fa-heart"></i> В избранное</button>
+          </div>
+        </div>
+
+        <div class="job-details-sidebar">
+          <div class="sidebar-widget company-widget">
+            <h3>О компании</h3>
+            <div class="company-brief">
+              <p>ООО "ДизайнПро" - креативная студия дизайна, специализирующаяся на разработке пользовательских интерфейсов для веб-сервисов и мобильных приложений.</p>
+              <ul class="company-facts">
+                <li><i class="fas fa-users"></i> 20-50 сотрудников</li>
+                <li><i class="fas fa-calendar-alt"></i> Основана в 2016 году</li>
+                <li><i class="fas fa-globe"></i> <a href="https://designpro.ru" target="_blank">designpro.ru</a></li>
+              </ul>
+            </div>
+            <a href="company-details.html?id=designpro" class="btn btn-outline btn-sm btn-block">Подробнее о компании</a>
+          </div>
+
+          <div class="sidebar-widget similar-jobs">
+            <h3>Похожие вакансии</h3>
+            <div class="similar-jobs-list">
+              <a href="job-details-frontend.html" class="similar-job-item">
+                <h4>Frontend-разработчик</h4>
+                <p class="company-name">ООО "ТехСтарт"</p>
+                <p class="job-salary">от 120 000 ₽</p>
+              </a>
+              <a href="job-details-content.html" class="similar-job-item">
+                <h4>Удаленный контент-менеджер</h4>
+                <p class="company-name">ООО "МедиаХаб"</p>
+                <p class="job-salary">от 60 000 ₽</p>
+              </a>
+              <a href="job-details-sales.html" class="similar-job-item">
+                <h4>Менеджер по продажам</h4>
+                <p class="company-name">ООО "ТоргПлюс"</p>
+                <p class="job-salary">80 000 — 150 000 ₽</p>
+              </a>
+            </div>
+            <a href="search-jobs.html?q=ui-дизайнер" class="btn btn-outline btn-sm btn-block">Все похожие вакансии</a>
+          </div>
+
+          <div class="sidebar-widget job-alert">
+            <h3>Получайте новые вакансии</h3>
+            <p>Подпишитесь на уведомления о новых вакансиях по запросу "Дизайнер интерфейсов"</p>
+            <form class="job-alert-form">
+              <input type="email" placeholder="Ваш email" required>
+              <button type="submit" class="btn btn-primary btn-block">Подписаться</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="logo-icon">JH</span>
+          <span class="logo-text">JobHub</span>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Соискателям</h4>
+            <ul>
+              <li><a href="search-jobs.html">Поиск вакансий</a></li>
+              <li><a href="create-resume.html">Создать резюме</a></li>
+              <li><a href="career-advice.html">Карьерные советы</a></li>
+              <li><a href="salary.html">Узнать зарплату</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Работодателям</h4>
+            <ul>
+              <li><a href="post-job.html">Разместить вакансию</a></li>
+              <li><a href="search-resumes.html">Поиск резюме</a></li>
+              <li><a href="employer-services.html">Услуги и цены</a></li>
+              <li><a href="employer-help.html">Помощь</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>JobHub</h4>
+            <ul>
+              <li><a href="about.html">О компании</a></li>
+              <li><a href="contacts.html">Контакты</a></li>
+              <li><a href="terms.html">Пользовательское соглашение</a></li>
+              <li><a href="privacy.html">Политика конфиденциальности</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Приложение</h4>
+            <div class="app-buttons">
+              <a href="#" class="app-button">
+                <i class="fab fa-apple"></i>
+                <span>App Store</span>
+              </a>
+              <a href="#" class="app-button">
+                <i class="fab fa-google-play"></i>
+                <span>Google Play</span>
+              </a>
+            </div>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-vk"></i></a>
+              <a href="#"><i class="fab fa-telegram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2023 JobHub. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="job-details.js"></script>
+</body>
+</html>

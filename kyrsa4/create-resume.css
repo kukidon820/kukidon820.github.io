@@ -1,0 +1,369 @@
+/* Create Resume Page Styles */
+
+/* Resume Header */
+.resume-header {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.resume-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.resume-header p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Resume Form Container */
+.resume-form-container {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 20px var(--shadow-color);
+  margin-bottom: 60px;
+  overflow: hidden;
+}
+
+/* Progress Steps */
+.resume-progress {
+  padding: 30px;
+  background-color: var(--background-light);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.progress-step::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--border-color);
+  z-index: 1;
+}
+
+.progress-step:last-child::after {
+  display: none;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background-color: var(--background-color);
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+  transition: all var(--transition-speed);
+}
+
+.step-label {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  text-align: center;
+  transition: color var(--transition-speed);
+}
+
+.progress-step.active .step-number {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.progress-step.active .step-label {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.progress-step.completed .step-number {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+  color: white;
+}
+
+.progress-step.completed .step-label {
+  color: var(--success-color);
+}
+
+.progress-bar {
+  height: 6px;
+  background-color: var(--border-color);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--primary-color);
+  transition: width var(--transition-speed);
+}
+
+/* Form Styles */
+.resume-form {
+  padding: 30px;
+}
+
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+}
+
+.form-step h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: var(--text-dark);
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.form-step h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 10px;
+}
+
+.checkbox-group label {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+/* Photo Upload */
+.photo-upload {
+  margin-bottom: 30px;
+}
+
+.photo-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.photo-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--background-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: var(--text-light);
+  overflow: hidden;
+}
+
+.photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-hint {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: 8px;
+}
+
+/* Salary Input */
+.salary-input {
+  display: flex;
+  align-items: center;
+}
+
+.salary-input input {
+  flex: 1;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.salary-input select {
+  width: 60px;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  border-left: none;
+}
+
+/* Experience and Education Items */
+.experience-item,
+.education-item,
+.course-item,
+.language-item {
+  background-color: var(--background-light);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.remove-item,
+.remove-language,
+.remove-course {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.add-experience,
+.add-education,
+.add-language,
+.add-course {
+  margin-bottom: 30px;
+}
+
+/* Skills Input */
+.skills-input {
+  position: relative;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.skill-tag {
+  background-color: var(--background-light);
+  color: var(--primary-color);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--primary-color);
+}
+
+.skill-tag .remove-skill {
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .progress-steps {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .progress-step {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .progress-step::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .resume-form {
+    padding: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .photo-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}
+
