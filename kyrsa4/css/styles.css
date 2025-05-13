@@ -1,3 +1,16 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
 .services-menu {
   display: none;
   position: absolute;
@@ -1190,16 +1203,23 @@ ul {
     height: 250px;
   }
 }
+/* Улучшенная адаптивная карусель */
+.carousel-container {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
 
-/* Адаптивная карусель */
 .carousel {
   position: relative;
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  height: 400px;
   width: 100%;
-  max-width: 100%;
+  height: 0;
+  padding-bottom: 100%; /* Соотношение сторон 1:1 */
 }
 
 .carousel-slide {
@@ -1222,6 +1242,9 @@ ul {
 }
 
 .carousel-slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1239,8 +1262,7 @@ ul {
   z-index: 10;
 }
 
-.carousel-control,
-.carousel-btn {
+.carousel-control {
   background-color: rgba(255, 255, 255, 0.3);
   color: white;
   border: none;
@@ -1255,8 +1277,7 @@ ul {
   z-index: 10;
 }
 
-.carousel-control:hover,
-.carousel-btn:hover {
+.carousel-control:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -1279,16 +1300,80 @@ ul {
   background-color: white;
 }
 
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
+/* Медиа-запросы для разных разрешений */
+@media (min-width: 1400px) {
+  .carousel-container {
+    max-width: 600px;
+  }
+
   .carousel {
-    height: 300px;
+    border-radius: 25px;
+  }
+
+  .carousel-control {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .indicator {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .carousel-container {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-content {
+    flex-direction: column;
   }
 
   .carousel-container {
-    width: 100%;
+    max-width: 600px;
+    margin-top: 30px;
+  }
+
+  .carousel {
+    padding-bottom: 75%; /* Соотношение 4:3 для средних экранов */
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
     max-width: 100%;
-    margin: 0;
+  }
+
+  .carousel {
+    border-radius: 15px;
+    padding-bottom: 70%; /* Немного уменьшаем высоту */
+  }
+
+  .carousel-controls {
+    bottom: 15px;
+    padding: 0 15px;
+  }
+
+  .carousel-control {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel {
+    border-radius: 12px;
+    padding-bottom: 65%; /* Еще уменьшаем высоту */
   }
 
   .carousel-controls {
@@ -1296,8 +1381,7 @@ ul {
     padding: 0 10px;
   }
 
-  .carousel-control,
-  .carousel-btn {
+  .carousel-control {
     width: 30px;
     height: 30px;
     font-size: 0.8rem;
@@ -1306,12 +1390,29 @@ ul {
   .indicator {
     width: 8px;
     height: 8px;
+    gap: 8px;
   }
 }
 
 @media (max-width: 480px) {
   .carousel {
-    height: 250px;
     border-radius: 10px;
+    padding-bottom: 60%; /* Для самых маленьких экранов */
+  }
+
+  .carousel-controls {
+    bottom: 8px;
+  }
+
+  .carousel-control {
+    width: 28px;
+    height: 28px;
+    font-size: 0.7rem;
+  }
+
+  .indicator {
+    width: 6px;
+    height: 6px;
+    gap: 6px;
   }
 }
