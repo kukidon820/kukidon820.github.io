@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Готовое резюме - JobHub</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/resume-ready.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header class="main-header">
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-content">
+        <div class="region-selector">
+          <a href="#" class="region-link">Россия</a>
+          <div class="region-dropdown">
+            <a href="#">Москва</a>
+            <a href="#">Санкт-Петербург</a>
+            <a href="#">Новосибирск</a>
+            <a href="#">Екатеринбург</a>
+            <a href="#">Казань</a>
+            <a href="#">Все города</a>
+          </div>
+        </div>
+        <nav class="top-nav">
+          <ul>
+            <li><a href="job-seekers.html" class="active">Соискателям</a></li>
+            <li><a href="employers.html">Работодателям</a></li>
+          </ul>
+        </nav>
+        <div class="top-services">
+          <a href="ready-resume.html">Готовое резюме</a>
+          <a href="career-consultation.html">Карьерная консультация</a>
+          <div class="services-dropdown">
+            <a href="#" class="services-link">Все сервисы <i class="fas fa-chevron-down"></i></a>
+            <div class="services-menu">
+              <a href="salary.html">Узнать зарплату</a>
+              <a href="career-advice.html">Карьерные советы</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-bar">
+    <div class="container">
+      <div class="main-bar-content">
+        <div class="logo">
+          <a href="index.html">
+            <span class="logo-icon">JH</span>
+            <span class="logo-text">JobHub</span>
+          </a>
+        </div>
+        <div class="auth-buttons">
+          <a href="create-resume.html" class="btn btn-outline">Создать резюме</a>
+          <a href="login.html" class="btn btn-primary">Войти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="resume-header">
+    <div class="container">
+      <h1>Готовое резюме</h1>
+      <p>Профессиональное резюме за 15 минут с помощью наших шаблонов и экспертных рекомендаций</p>
+      <a href="#templates" class="btn btn-primary btn-lg">Выбрать шаблон</a>
+    </div>
+  </section>
+
+  <div class="resume-content">
+    <div class="container">
+      <section class="how-it-works">
+        <div class="section-title">
+          <h2>Как это работает</h2>
+          <p>Создайте профессиональное резюме всего за 4 простых шага</p>
+        </div>
+
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Выберите шаблон</h3>
+              <p>Выберите подходящий шаблон из нашей коллекции</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Заполните информацию</h3>
+              <p>Введите свои данные в удобную форму</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Получите рекомендации</h3>
+              <p>Наши эксперты помогут улучшить ваше резюме</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Скачайте резюме</h3>
+              <p>Получите готовое резюме в PDF или Word</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="templates" class="templates-section">
+        <div class="section-title">
+          <h2>Профессиональные шаблоны</h2>
+          <p>Выберите шаблон, который подчеркнет ваши сильные стороны и поможет выделиться среди других кандидатов</p>
+        </div>
+
+        <div class="templates-grid">
+  <div class="template-card">
+    <div class="template-preview">
+      <img src="https://images.unsplash.com/photo-1586282391129-76a6df230234?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Шаблон Классический">
+      <div class="template-overlay">
+        <a href="#" class="btn btn-primary" data-template-id="classic">Выбрать шаблон</a>
+      </div>
+    </div>
+    <div class="template-content">
+      <h3>Классический</h3>
+      <p>Элегантный и профессиональный шаблон, подходящий для большинства специальностей</p>
+      <div class="template-meta">
+        <div class="template-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>4.5</span>
+        </div>
+        <span>Популярный</span>
+      </div>
+      <div id="template-details-classic" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-color);">
+        <h4>Особенности шаблона:</h4>
+        <ul style="list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+          <li>Строгий и лаконичный дизайн</li>
+          <li>Четкая структура разделов</li>
+          <li>Хорошо читаемый шрифт</li>
+          <li>Оптимальное использование пространства</li>
+          <li>Подходит для печати и цифрового использования</li>
+        </ul>
+        <p>Этот шаблон идеально подходит для специалистов в области финансов, юриспруденции, менеджмента и других традиционных сфер. Он создает впечатление надежности и профессионализма.</p>
+        <a href="#" class="btn btn-primary btn-sm">Использовать шаблон</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="template-card">
+    <div class="template-preview">
+      <img src="https://images.unsplash.com/photo-1586282391129-76a6df230234?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Шаблон Современный">
+      <div class="template-overlay">
+        <a href="#" class="btn btn-primary" data-template-id="modern">Выбрать шаблон</a>
+      </div>
+    </div>
+    <div class="template-content">
+      <h3>Современный</h3>
+      <p>Стильный и креативный шаблон для творческих профессий и IT-специалистов</p>
+      <div class="template-meta">
+        <div class="template-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>5.0</span>
+        </div>
+        <span>Новый</span>
+      </div>
+      <div id="template-details-modern" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-color);">
+        <h4>Особенности шаблона:</h4>
+        <ul style="list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+          <li>Современный минималистичный дизайн</li>
+          <li>Креативное расположение элементов</li>
+          <li>Цветовые акценты</li>
+          <li>Инфографика для отображения навыков</li>
+          <li>Адаптивный дизайн для цифрового использования</li>
+        </ul>
+        <p>Этот шаблон отлично подходит для дизайнеров, разработчиков, маркетологов и других специалистов в креативных и технических областях. Он поможет вам выделиться и продемонстрировать свой современный подход.</p>
+        <a href="#" class="btn btn-primary btn-sm">Использовать шаблон</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="template-card">
+    <div class="template-preview">
+      <img src="https://images.unsplash.com/photo-1586282391129-76a6df230234?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Шаблон Бизнес">
+      <div class="template-overlay">
+        <a href="#" class="btn btn-primary" data-template-id="business">Выбрать шаблон</a>
+      </div>
+    </div>
+    <div class="template-content">
+      <h3>Бизнес</h3>
+      <p>Строгий и лаконичный шаблон для руководителей и специалистов в области финансов</p>
+      <div class="template-meta">
+        <div class="template-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <span>4.0</span>
+        </div>
+        <span>Премиум</span>
+      </div>
+      <div id="template-details-business" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-color);">
+        <h4>Особенности шаблона:</h4>
+        <ul style="list-style: disc; padding-left: 20px; margin-bottom: 15px;">
+          <li>Строгий деловой стиль</li>
+          <li>Акцент на профессиональных достижениях</li>
+          <li>Специальные разделы для ключевых показателей эффективности</li>
+          <li>Элегантная цветовая схема</li>
+          <li>Оптимизирован для ATS-систем</li>
+        </ul>
+        <p>Этот шаблон идеально подходит для руководителей, менеджеров высшего звена, финансовых аналитиков и других специалистов в деловой сфере. Он подчеркивает ваш профессионализм и деловые качества.</p>
+        <a href="#" class="btn btn-primary btn-sm">Использовать шаблон</a>
+      </div>
+    </div>
+  </div>
+</div>
+      </section>
+
+      <section class="pricing-section">
+        <div class="section-title">
+          <h2>Тарифные планы</h2>
+          <p>Выберите подходящий тарифный план для создания идеального резюме</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Базовый</h3>
+              <div class="pricing-price">
+                <span class="price">Бесплатно</span>
+                <span class="period">навсегда</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> 1 шаблон резюме</li>
+                <li><i class="fas fa-check"></i> Экспорт в PDF</li>
+                <li><i class="fas fa-check"></i> Базовые рекомендации</li>
+                <li class="disabled"><i class="fas fa-times"></i> Премиум шаблоны</li>
+                <li class="disabled"><i class="fas fa-times"></i> Экспертная проверка</li>
+                <li class="disabled"><i class="fas fa-times"></i> Приоритетная поддержка</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="#" class="btn btn-outline btn-block">Выбрать план</a>
+            </div>
+          </div>
+
+          <div class="pricing-card popular">
+            <div class="pricing-header">
+              <div class="popular-badge">Популярный</div>
+              <h3>Стандарт</h3>
+              <div class="pricing-price">
+                <span class="price">990 ₽</span>
+                <span class="period">разовая оплата</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Все шаблоны резюме</li>
+                <li><i class="fas fa-check"></i> Экспорт в PDF и Word</li>
+                <li><i class="fas fa-check"></i> Расширенные рекомендации</li>
+                <li><i class="fas fa-check"></i> Премиум шаблоны</li>
+                <li class="disabled"><i class="fas fa-times"></i> Экспертная проверка</li>
+                <li class="disabled"><i class="fas fa-times"></i> Приоритетная поддержка</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="#" class="btn btn-primary btn-block">Выбрать план</a>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Премиум</h3>
+              <div class="pricing-price">
+                <span class="price">1 990 ₽</span>
+                <span class="period">разовая оплата</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Все шаблоны резюме</li>
+                <li><i class="fas fa-check"></i> Экспорт в PDF и Word</li>
+                <li><i class="fas fa-check"></i> Расширенные рекомендации</li>
+                <li><i class="fas fa-check"></i> Премиум шаблоны</li>
+                <li><i class="fas fa-check"></i> Экспертная проверка</li>
+                <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="#" class="btn btn-outline btn-block">Выбрать план</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials-section">
+        <div class="section-title">
+          <h2>Отзывы наших клиентов</h2>
+          <p>Узнайте, что говорят о нашем сервисе люди, которые уже нашли работу с помощью наших резюме</p>
+        </div>
+
+        <div class="testimonials-slider">
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <div class="testimonial-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" alt="Фото пользователя">
+              </div>
+              <p class="testimonial-quote">"Благодаря сервису 'Готовое резюме' я смог создать профессиональное резюме всего за 20 минут. Уже через неделю меня пригласили на собеседование в компанию мечты!"</p>
+              <div class="testimonial-author">
+                <h4>Александр Петров</h4>
+                <p>Frontend-разработчик</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-controls">
+            <button class="testimonial-prev"><i class="fas fa-chevron-left"></i></button>
+            <div class="testimonial-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <button class="testimonial-next"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section">
+        <div class="section-title">
+          <h2>Часто задаваемые вопросы</h2>
+          <p>Ответы на популярные вопросы о сервисе "Готовое резюме"</p>
+        </div>
+
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Как создать резюме с помощью вашего сервиса?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Для создания резюме выберите подходящий шаблон, заполните информацию о себе, образовании и опыте работы в удобной форме. Наш сервис автоматически сформирует профессиональное резюме, которое вы сможете скачать в формате PDF или Word.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Могу ли я редактировать созданное резюме?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Да, вы можете редактировать созданное резюме в любое время. Все ваши резюме сохраняются в личном кабинете, и вы можете вносить изменения, добавлять новую информацию или менять шаблон.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Что такое экспертная проверка резюме?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Экспертная проверка резюме — это услуга, при которой профессиональный HR-специалист проверяет ваше резюме и дает рекомендации по его улучшению. Эксперт обращает внимание на структуру, содержание, формулировки и общее впечатление от резюме.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>В каких форматах я могу скачать резюме?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>В зависимости от выбранного тарифного плана, вы можете скачать резюме в формате PDF (доступно на всех тарифах) или Word (доступно на тарифах "Стандарт" и "Премиум"). Формат PDF рекомендуется для отправки резюме работодателям, а формат Word удобен для дальнейшего редактирования.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-container">
+          <h2>Создайте профессиональное резюме прямо сейчас</h2>
+          <p>Выделитесь среди других кандидатов и увеличьте свои шансы на получение работы мечты</p>
+          <a href="#templates" class="btn btn-primary btn-lg">Начать создание резюме</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="logo-icon">JH</span>
+        <span class="logo-text">JobHub</span>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Соискателям</h4>
+          <ul>
+            <li><a href="search-jobs.html">Поиск вакансий</a></li>
+            <li><a href="create-resume.html">Создать резюме</a></li>
+            <li><a href="career-advice.html">Карьерные советы</a></li>
+            <li><a href="salary.html">Узнать зарплату</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Работодателям</h4>
+          <ul>
+            <li><a href="post-job.html">Разместить вакансию</a></li>
+            <li><a href="search-resumes.html">Поиск резюме</a></li>
+            <li><a href="employer-services.html">Услуги и цены</a></li>
+            <li><a href="employer-help.html">Помощь</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>JobHub</h4>
+          <ul>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="terms.html">Пользовательское соглашение</a></li>
+            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Приложение</h4>
+          <div class="app-buttons">
+            <a href="#" class="app-button">
+              <i class="fab fa-apple"></i>
+              <span>App Store</span>
+            </a>
+            <a href="#" class="app-button">
+              <i class="fab fa-google-play"></i>
+              <span>Google Play</span>
+            </a>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="footer-bottom">
+        © 2025 JobHub. Все права защищены.
+
+        <a href="tel:+375293334192" style="color: white"> +375293334192</a>
+
+        <a href="https://www.google.com/maps/place/Google+London+-+Central+Saint+Giles/@64.5404623,-21.9133212,1604m/data=!3m1!1e3!4m6!3m5!1s0x4876051f55732655:0x77d00e13ac2579f8!8m2!3d51.5160322!4d-0.1271091!16s%2Fg%2F1tdy3_0c?entry=ttu&g_ep=EgoyMDI1MDUwNy4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" style="color: white">
+          Адрес</a>
+        <p></p>
+
+      </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script src="js/ready-resume.js"></script>
+</body>
+</html>
