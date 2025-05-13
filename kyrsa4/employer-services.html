@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Услуги и цены - JobHub</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+.services-header {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.services-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.services-header p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+.services-content {
+  padding: 60px 0;
+}
+
+.pricing-plans {
+  margin-bottom: 60px;
+}
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pricing-header h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.pricing-header p {
+  color: var(--text-light);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.pricing-card {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 20px var(--shadow-color);
+  overflow: hidden;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  position: relative;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+.pricing-card.popular {
+  border: 2px solid var(--primary-color);
+  transform: scale(1.05);
+}
+
+.pricing-card.popular:hover {
+  transform: scale(1.05) translateY(-10px);
+}
+
+.popular-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 0 var(--border-radius) 0 var(--border-radius);
+}
+
+.pricing-header-card {
+  padding: 30px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.pricing-header-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.pricing-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.period {
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+.pricing-features {
+  padding: 30px;
+}
+
+.pricing-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pricing-features li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.pricing-features li i {
+  margin-right: 10px;
+  color: var(--success-color);
+}
+
+.pricing-features li.disabled {
+  color: var(--text-light);
+}
+
+.pricing-features li.disabled i {
+  color: var(--text-light);
+}
+
+.pricing-footer {
+  padding: 0 30px 30px;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.custom-plan {
+  text-align: center;
+  padding: 40px;
+  background-color: var(--background-light);
+  border-radius: var(--border-radius);
+  margin-top: 30px;
+}
+
+.custom-plan h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.custom-plan p {
+  margin-bottom: 20px;
+  color: var(--text-light);
+}
+
+.services-list {
+  margin-top: 60px;
+}
+
+.services-list-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.services-list-header h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.services-list-header p {
+  color: var(--text-light);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.service-card {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px var(--shadow-color);
+  padding: 30px;
+  display: flex;
+  gap: 20px;
+  transition: transform var(--transition-speed);
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-light);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.service-content {
+  flex: 1;
+}
+
+.service-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+
+.service-content p {
+  color: var(--text-color);
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.service-price {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.faq-section {
+  margin-top: 60px;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.faq-header h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.faq-header p {
+  color: var(--text-light);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  margin-bottom: 15px;
+  box-shadow: 0 3px 10px var(--shadow-color);
+  overflow: hidden;
+}
+
+.faq-question {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.faq-question:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.faq-question h3 {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.faq-toggle {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  transition: transform var(--transition-speed);
+}
+
+.faq-item.active .faq-toggle {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-speed), padding var(--transition-speed);
+}
+
+.faq-item.active .faq-answer {
+  padding: 0 20px 20px;
+  max-height: 1000px;
+}
+
+.faq-answer p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.contact-section {
+  margin-top: 60px;
+  background-color: var(--background-light);
+  padding: 60px 0;
+  text-align: center;
+}
+
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-container h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.contact-container p {
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (max-width: 992px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pricing-card.popular {
+    transform: scale(1);
+  }
+
+  .pricing-card.popular:hover {
+    transform: translateY(-10px);
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-header h1 {
+    font-size: 2rem;
+  }
+
+  .contact-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .service-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+<header class="main-header">
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-content">
+        <div class="region-selector">
+          <a href="#" class="region-link">Россия</a>
+          <div class="region-dropdown">
+            <a href="#">Москва</a>
+            <a href="#">Санкт-Петербург</a>
+            <a href="#">Новосибирск</a>
+            <a href="#">Екатеринбург</a>
+            <a href="#">Казань</a>
+            <a href="#">Все города</a>
+          </div>
+        </div>
+        <nav class="top-nav">
+          <ul>
+            <li><a href="job-seekers.html">Соискателям</a></li>
+            <li><a href="employers.html" class="active">Работодателям</a></li>
+          </ul>
+        </nav>
+        <div class="top-services">
+          <a href="ready-resume.html">Готовое резюме</a>
+          <a href="career-consultation.html">Карьерная консультация</a>
+          <div class="services-dropdown">
+            <a href="#" class="services-link">Все сервисы <i class="fas fa-chevron-down"></i></a>
+            <div class="services-menu">
+              <a href="salary.html">Узнать зарплату</a>
+              <a href="career-advice.html">Карьерные советы</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-bar">
+    <div class="container">
+      <div class="main-bar-content">
+        <div class="logo">
+          <a href="index.html">
+            <span class="logo-icon">JH</span>
+            <span class="logo-text">JobHub</span>
+          </a>
+        </div>
+        <div class="auth-buttons">
+          <a href="post-job.html" class="btn btn-outline">Разместить вакансию</a>
+          <a href="login.html" class="btn btn-primary">Войти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="services-header">
+    <div class="container">
+      <h1>Услуги и цены для работодателей</h1>
+      <p>Выберите подходящий тарифный план для эффективного поиска сотрудников</p>
+    </div>
+  </section>
+
+  <div class="services-content">
+    <div class="container">
+      <section class="pricing-plans">
+        <div class="pricing-header">
+          <h2>Тарифные планы</h2>
+          <p>Выберите подходящий тарифный план для вашей компании</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header-card">
+              <h3>Базовый</h3>
+              <div class="pricing-price">
+                <span class="price">5 000 ₽</span>
+                <span class="period">/ месяц</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> 3 активные вакансии</li>
+                <li><i class="fas fa-check"></i> Доступ к базе резюме</li>
+                <li><i class="fas fa-check"></i> Базовая статистика</li>
+                <li><i class="fas fa-check"></i> Email-поддержка</li>
+                <li class="disabled"><i class="fas fa-times"></i> Продвижение вакансий</li>
+                <li class="disabled"><i class="fas fa-times"></i> Персональный менеджер</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="signup.html?plan=basic" class="btn btn-outline btn-block">Выбрать план</a>
+            </div>
+          </div>
+
+          <div class="pricing-card popular">
+            <div class="popular-badge">Популярный</div>
+            <div class="pricing-header-card">
+              <h3>Стандарт</h3>
+              <div class="pricing-price">
+                <span class="price">15 000 ₽</span>
+                <span class="period">/ месяц</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> 10 активных вакансий</li>
+                <li><i class="fas fa-check"></i> Расширенный доступ к базе резюме</li>
+                <li><i class="fas fa-check"></i> Детальная статистика</li>
+                <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
+                <li><i class="fas fa-check"></i> Продвижение вакансий</li>
+                <li class="disabled"><i class="fas fa-times"></i> Персональный менеджер</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="signup.html?plan=standard" class="btn btn-primary btn-block">Выбрать план</a>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header-card">
+              <h3>Премиум</h3>
+              <div class="pricing-price">
+                <span class="price">30 000 ₽</span>
+                <span class="period">/ месяц</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Неограниченное количество вакансий</li>
+                <li><i class="fas fa-check"></i> Полный доступ к базе резюме</li>
+                <li><i class="fas fa-check"></i> Расширенная аналитика</li>
+                <li><i class="fas fa-check"></i> Круглосуточная поддержка</li>
+                <li><i class="fas fa-check"></i> Премиум продвижение вакансий</li>
+                <li><i class="fas fa-check"></i> Персональный менеджер</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="signup.html?plan=premium" class="btn btn-outline btn-block">Выбрать план</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="custom-plan">
+          <h3>Нужен индивидуальный план?</h3>
+          <p>Свяжитесь с нами для разработки индивидуального решения для вашей компании</p>
+          <a href="contacts.html" class="btn btn-secondary">Связаться с нами</a>
+        </div>
+      </section>
+
+      <section class="services-list">
+        <div class="services-list-header">
+          <h2>Дополнительные услуги</h2>
+          <p>Расширьте возможности вашего аккаунта с помощью дополнительных услуг</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-bullhorn"></i>
+            </div>
+            <div class="service-content">
+              <h3>Продвижение вакансии</h3>
+              <p>Ваша вакансия будет отображаться в топе результатов поиска и получит специальную отметку</p>
+              <div class="service-price">от 3 000 ₽</div>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="service-content">
+              <h3>Email-рассылка</h3>
+              <p>Отправка информации о вашей вакансии подходящим кандидатам по email</p>
+              <div class="service-price">от 2 500 ₽</div>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-user-check"></i>
+            </div>
+            <div class="service-content">
+              <h3>Предварительный отбор кандидатов</h3>
+              <p>Наши специалисты проведут первичный отбор кандидатов по вашим требованиям</p>
+              <div class="service-price">от 10 000 ₽</div>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-building"></i>
+            </div>
+            <div class="service-content">
+              <h3>Брендирование страницы компании</h3>
+              <p>Создание уникальной страницы компании с вашим фирменным стилем</p>
+              <div class="service-price">от 5 000 ₽</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section">
+        <div class="faq-header">
+          <h2>Часто задаваемые вопросы</h2>
+          <p>Ответы на популярные вопросы о наших услугах</p>
+        </div>
+
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Как оплатить услуги JobHub?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Оплата услуг производится через личный кабинет работодателя. Мы принимаем оплату банковскими картами, банковским переводом или электронными деньгами. После оплаты вы получите электронный чек и доступ к выбранным услугам.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Можно ли изменить тарифный план?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Да, вы можете изменить тарифный план в любое время через личный кабинет. При переходе на более дорогой тариф вы доплачиваете только разницу. При переходе на более дешевый тариф изменения вступят в силу после окончания текущего оплаченного периода.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Как долго публикуется вакансия?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Стандартный срок публикации вакансии составляет 30 дней. По истечении этого срока вы можете продлить публикацию или обновить вакансию. В тарифных планах указано количество одновременно активных вакансий.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Что такое продвижение вакансии?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Продвижение вакансии — это услуга, которая позволяет выделить вашу вакансию среди других. Продвигаемые вакансии отображаются в топе результатов поиска, имеют специальную отметку и получают больше откликов от соискателей.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Можно ли получить доступ к контактам соискателей?</h3>
+              <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Доступ к контактным данным соискателей предоставляется в зависимости от выбранного тарифного плана. В базовом тарифе доступ ограничен, в стандартном и премиум тарифах предоставляется расширенный и полный доступ соответственно.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section">
+        <div class="contact-container">
+          <h2>Остались вопросы?</h2>
+          <p>Наша команда готова помочь вам с подбором персонала и ответить на любые вопросы</p>
+          <div class="contact-buttons">
+            <a href="tel:+78001234567" class="btn btn-outline btn-lg"><i class="fas fa-phone"></i> 8 (800) 123-45-67</a>
+            <a href="contacts.html" class="btn btn-primary btn-lg">Связаться с нами</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="logo-icon">JH</span>
+        <span class="logo-text">JobHub</span>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Соискателям</h4>
+          <ul>
+            <li><a href="search-jobs.html">Поиск вакансий</a></li>
+            <li><a href="create-resume.html">Создать резюме</a></li>
+            <li><a href="career-advice.html">Карьерные советы</a></li>
+            <li><a href="salary.html">Узнать зарплату</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Работодателям</h4>
+          <ul>
+            <li><a href="post-job.html">Разместить вакансию</a></li>
+            <li><a href="search-resumes.html">Поиск резюме</a></li>
+            <li><a href="employer-services.html">Услуги и цены</a></li>
+            <li><a href="employer-help.html">Помощь</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>JobHub</h4>
+          <ul>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="terms.html">Пользовательское соглашение</a></li>
+            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Приложение</h4>
+          <div class="app-buttons">
+            <a href="#" class="app-button">
+              <i class="fab fa-apple"></i>
+              <span>App Store</span>
+            </a>
+            <a href="#" class="app-button">
+              <i class="fab fa-google-play"></i>
+              <span>Google Play</span>
+            </a>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+        © 2025 JobHub. Все права защищены.
+
+        <a href="tel:+375293334192" style="color: white"> +375293334192</a>
+
+        <a href="https://www.google.com/maps/place/Google+London+-+Central+Saint+Giles/@64.5404623,-21.9133212,1604m/data=!3m1!1e3!4m6!3m5!1s0x4876051f55732655:0x77d00e13ac2579f8!8m2!3d51.5160322!4d-0.1271091!16s%2Fg%2F1tdy3_0c?entry=ttu&g_ep=EgoyMDI1MDUwNy4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" style="color: white">
+          Адрес</a>
+        <p></p>
+
+      </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script src="js/employer-services.js"></script>
+</body>
+</html>
+
