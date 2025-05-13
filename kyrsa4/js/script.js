@@ -1,4 +1,437 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Универсальная карусель, работающая на всех устройствах
+  const initCarousel = () => {
+    // Проверяем наличие карусели на странице
+    const carousel = document.querySelector(".carousel")
+    const slides = document.querySelectorAll(".carousel-slide")
+
+    if (!carousel || slides.length === 0) return
+
+    // Получаем элементы управления
+    const prevBtn = document.querySelector(".carousel-control.prev")
+    const nextBtn = document.querySelector(".carousel-control.next")
+    const indicators = document.querySelectorAll(".indicator")
+
+    let currentIndex = 0
+    let autoSlideInterval
+
+    // Функция для показа слайда
+    const showSlide = (index) => {
+      // Скрываем все слайды
+      slides.forEach((slide) => {
+        slide.classList.remove("active")
+        slide.style.opacity = "0"
+        slide.style.zIndex = "1"
+      })
+
+      // Убираем активный класс у всех индикаторов
+      indicators.forEach((indicator) => {
+        indicator.classList.remove("active")
+      })
+
+      // Показываем текущий слайд
+      if (slides[index]) {
+        slides[index].classList.add("active")
+        slides[index].style.opacity = "1"
+        slides[index].style.zIndex = "2"
+      }
+
+      // Активируем соответствующий индикатор
+      if (indicators[index]) {
+        indicators[index].classList.add("active")
+      }
+
+      // Обновляем текущий индекс
+      currentIndex = index
+    }
+
+    // Функция для перехода к следующему слайду
+    const nextSlide = () => {
+      let nextIndex = currentIndex + 1
+      if (nextIndex >= slides.length) {
+        nextIndex = 0
+      }
+      showSlide(nextIndex)
+    }
+
+    // Функция для перехода к предыдущему слайду
+    const prevSlide = () => {
+      let prevIndex = currentIndex - 1
+      if (prevIndex < 0) {
+        prevIndex = slides.length - 1
+      }
+      showSlide(prevIndex)
+    }
+
+    // Запуск автоматической смены слайдов
+    const startAutoSlide = () => {
+      stopAutoSlide() // Сначала останавливаем, если уже запущено
+      autoSlideInterval = setInterval(nextSlide, 5000)
+    }
+
+    // Остановка автоматической смены слайдов
+    const stopAutoSlide = () => {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval)
+      }
+    }
+
+    // Инициализация карусели
+    const initCarouselEvents = () => {
+      // Показываем первый слайд
+      showSlide(0)
+
+      // Добавляем обработчики для кнопок
+      if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+          prevSlide()
+          stopAutoSlide()
+          startAutoSlide()
+        })
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          nextSlide()
+          stopAutoSlide()
+          startAutoSlide()
+        })
+      }
+
+      // Добавляем обработчики для индикаторов
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener("click", () => {
+          showSlide(index)
+          stopAutoSlide()
+          startAutoSlide()
+        })
+      })
+
+      // Добавляем обработчики для свайпа на мобильных устройствах
+      let touchStartX = 0
+      let touchEndX = 0
+
+      carousel.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].screenX
+        },
+        { passive: true },
+      )
+
+      carousel.addEventListener(
+        "touchend",
+        (e) => {
+          touchEndX = e.changedTouches[0].screenX
+          handleSwipe()
+        },
+        { passive: true },
+      )
+
+      const handleSwipe = () => {
+        const swipeThreshold = 50 // Минимальное расстояние для свайпа
+
+        // Свайп влево (следующий слайд)
+        if (touchEndX < touchStartX - swipeThreshold) {
+          nextSlide()
+          stopAutoSlide()
+          startAutoSlide()
+        }
+
+        // Свайп вправо (предыдущий слайд)
+        if (touchEndX > touchStartX + swipeThreshold) {
+          prevSlide()
+          stopAutoSlide()
+          startAutoSlide()
+        }
+      }
+
+      // Пауза автоматической смены при наведении
+      carousel.addEventListener("mouseenter", stopAutoSlide)
+      carousel.addEventListener("mouseleave", startAutoSlide)
+
+      // Запускаем автоматическую смену слайдов
+      startAutoSlide()
+
+      // Обработчик изменения размера окна
+      window.addEventListener("resize", () => {
+        // Перезапускаем карусель при изменении размера окна
+        showSlide(currentIndex)
+      })
+    }
+
+    // Запускаем инициализацию
+    initCarouselEvents()
+  }
+
+  // Вызываем инициализацию карусели
+  initCarousel()
+
+  // Бургер-меню
+  const burgerMenu = document.querySelector(".burger-menu")
+  const mobileMenu = document.querySelector(".mobile-menu")
+
+  if (burgerMenu && mobileMenu) {
+    burgerMenu.addEventListener("click", () => {
+      burgerMenu.classList.toggle("active")
+      mobileMenu.classList.toggle("active")
+    })
+
+    // Закрываем меню при клике на ссылку
+    const mobileLinks = document.querySelectorAll(".mobile-nav a")
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        burgerMenu.classList.remove("active")
+        mobileMenu.classList.remove("active")
+      })
+    })
+  }
+
+  // Создаем бургер-меню, если его еще нет
+  const createBurgerMenu = () => {
+    // Проверяем, существует ли уже бургер-меню
+    if (document.querySelector(".burger-menu")) {
+      return
+    }
+
+    const header = document.querySelector(".main-header")
+    const mainBarContent = document.querySelector(".main-bar-content")
+
+    if (!header || !mainBarContent) return
+
+    // Создаем элементы бургер-меню
+    const burgerMenu = document.createElement("div")
+    burgerMenu.className = "burger-menu"
+    burgerMenu.innerHTML = `
+      <div class="burger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    `
+
+    // Создаем мобильное меню
+    const mobileMenu = document.createElement("div")
+    mobileMenu.className = "mobile-menu"
+
+    // Получаем ссылки из верхней навигации и сервисов
+    const topNav = document.querySelector(".top-nav")
+    const topServices = document.querySelector(".top-services")
+
+    // Создаем контейнер для мобильного меню
+    const mobileMenuContainer = document.createElement("div")
+    mobileMenuContainer.className = "container"
+
+    // Создаем навигацию для мобильного меню
+    const mobileNav = document.createElement("nav")
+    mobileNav.className = "mobile-nav"
+    const mobileNavList = document.createElement("ul")
+
+    // Добавляем ссылки из верхней навигации
+    if (topNav) {
+      const navLinks = topNav.querySelectorAll("a")
+      navLinks.forEach((link) => {
+        const li = document.createElement("li")
+        const newLink = link.cloneNode(true)
+        li.appendChild(newLink)
+        mobileNavList.appendChild(li)
+      })
+    }
+
+    // Добавляем ссылки из сервисов
+    if (topServices) {
+      const serviceLinks = topServices.querySelectorAll("a:not(.services-link)")
+      serviceLinks.forEach((link) => {
+        const li = document.createElement("li")
+        const newLink = link.cloneNode(true)
+        li.appendChild(newLink)
+        mobileNavList.appendChild(li)
+      })
+
+      // Добавляем ссылки из выпадающего меню сервисов
+      const servicesMenu = topServices.querySelector(".services-menu")
+      if (servicesMenu) {
+        const serviceMenuLinks = servicesMenu.querySelectorAll("a")
+        serviceMenuLinks.forEach((link) => {
+          const li = document.createElement("li")
+          const newLink = link.cloneNode(true)
+          li.appendChild(newLink)
+          mobileNavList.appendChild(li)
+        })
+      }
+    }
+
+    mobileNav.appendChild(mobileNavList)
+
+    // Добавляем кнопки авторизации
+    const authButtons = document.querySelector(".auth-buttons")
+    const mobileAuthButtons = document.createElement("div")
+    mobileAuthButtons.className = "mobile-auth-buttons"
+
+    if (authButtons) {
+      const buttons = authButtons.querySelectorAll("a")
+      buttons.forEach((button) => {
+        const newButton = button.cloneNode(true)
+        mobileAuthButtons.appendChild(newButton)
+      })
+    }
+
+    // Собираем мобильное меню
+    mobileMenuContainer.appendChild(mobileNav)
+    mobileMenuContainer.appendChild(mobileAuthButtons)
+    mobileMenu.appendChild(mobileMenuContainer)
+
+    // Добавляем элементы на страницу
+    mainBarContent.appendChild(burgerMenu)
+    header.appendChild(mobileMenu)
+
+    // Добавляем обработчики событий
+    burgerMenu.addEventListener("click", () => {
+      burgerMenu.classList.toggle("active")
+      mobileMenu.classList.toggle("active")
+    })
+
+    // Закрываем меню при клике на ссылку
+    const mobileLinks = mobileMenu.querySelectorAll("a")
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        burgerMenu.classList.remove("active")
+        mobileMenu.classList.remove("active")
+      })
+    })
+
+    // Закрываем меню при клике вне меню
+    document.addEventListener("click", (e) => {
+      if (!burgerMenu.contains(e.target) && !mobileMenu.contains(e.target)) {
+        burgerMenu.classList.remove("active")
+        mobileMenu.classList.remove("active")
+      }
+    })
+  }
+
+  // Вызываем функцию создания бургер-меню
+  createBurgerMenu()
+
+  // Обновляем бургер-меню при изменении размера окна
+  window.addEventListener("resize", () => {
+    if (window.innerWidth <= 768) {
+      createBurgerMenu()
+    }
+  })
+
+  // Services dropdown functionality
+  const servicesLink = document.querySelector(".services-link")
+  const servicesMenu = document.querySelector(".services-menu")
+
+  if (servicesLink && servicesMenu) {
+    // Toggle menu on click
+    servicesLink.addEventListener("click", (e) => {
+      e.preventDefault()
+      servicesMenu.style.display = servicesMenu.style.display === "block" ? "none" : "block"
+      servicesLink.classList.toggle("active")
+    })
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!servicesLink.contains(e.target) && !servicesMenu.contains(e.target)) {
+        servicesMenu.style.display = "none"
+        servicesLink.classList.remove("active")
+      }
+    })
+  }
+
+  // Region Selector
+  const regionLink = document.querySelector(".region-link")
+  const regionDropdown = document.querySelector(".region-dropdown")
+
+  if (regionLink && regionDropdown) {
+    regionLink.addEventListener("click", (e) => {
+      e.preventDefault()
+      regionDropdown.style.display = regionDropdown.style.display === "block" ? "none" : "block"
+    })
+
+    document.addEventListener("click", (e) => {
+      if (!regionLink.contains(e.target) && !regionDropdown.contains(e.target)) {
+        regionDropdown.style.display = "none"
+      }
+    })
+  }
+
+  // Phone Verification Form
+  const phoneForm = document.querySelector(".verification-form")
+  const phoneInput = document.querySelector(".phone-input")
+
+  if (phoneForm && phoneInput) {
+    phoneForm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      if (!phoneInput.value.trim()) {
+        alert("Пожалуйста, введите номер телефона")
+        return
+      }
+
+      // Simulate form submission
+      const submitBtn = phoneForm.querySelector(".btn-primary")
+      if (submitBtn) {
+        submitBtn.textContent = "Отправка..."
+        submitBtn.disabled = true
+
+        setTimeout(() => {
+          alert("Код подтверждения отправлен на указанный номер")
+          // Redirect to verification page or show verification input
+          // window.location.href = 'verification.html';
+        }, 1500)
+      }
+    })
+  }
+
+  // Search Form
+  const searchForm = document.querySelector(".search-form")
+  const searchInput = document.querySelector(".search-input")
+
+  if (searchForm && searchInput) {
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      if (!searchInput.value.trim()) {
+        alert("Пожалуйста, введите поисковый запрос")
+        return
+      }
+
+      // Redirect to search results page
+      window.location.href = `search-results.html?q=${encodeURIComponent(searchInput.value.trim())}`
+    })
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
   // Theme Toggle
   const themeToggleBtn = document.getElementById("theme-toggle-btn")
   const body = document.body
