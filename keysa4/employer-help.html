@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Помощь работодателям - JobHub</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/theme-toggle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+.help-header {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.help-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.help-header p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+.help-search {
+  max-width: 600px;
+  margin: 30px auto 0;
+  position: relative;
+}
+
+.help-search input {
+  width: 100%;
+  padding: 15px 20px 15px 50px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+}
+
+.help-search i {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  font-size: 1.2rem;
+}
+
+.help-search input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.help-content {
+  padding: 60px 0;
+}
+
+.help-container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+}
+
+.help-sidebar {
+  position: sticky;
+  top: 20px;
+  align-self: start;
+}
+
+.help-categories {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px var(--shadow-color);
+  overflow: hidden;
+}
+
+.help-category {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.help-category:last-child {
+  border-bottom: none;
+}
+
+.help-category-title {
+  padding: 15px 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.help-category-title:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.help-category-title i {
+  transition: transform var(--transition-speed);
+}
+
+.help-category.active .help-category-title i {
+  transform: rotate(180deg);
+}
+
+.help-subcategories {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-speed);
+}
+
+.help-category.active .help-subcategories {
+  max-height: 500px;
+}
+
+.help-subcategory {
+  padding: 10px 20px 10px 40px;
+  color: var(--text-color);
+  display: block;
+  transition: background-color var(--transition-speed);
+}
+
+.help-subcategory:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.help-subcategory.active {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.contact-support {
+  margin-top: 30px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px var(--shadow-color);
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-support h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.contact-support p {
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: var(--border-radius);
+  background-color: var(--background-light);
+  color: var(--text-color);
+  transition: background-color var(--transition-speed);
+}
+
+.contact-method:hover {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.contact-method i {
+  font-size: 1.2rem;
+}
+
+.help-main {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px var(--shadow-color);
+  padding: 30px;
+}
+
+.help-main h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: var(--text-dark);
+}
+
+.help-main p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.help-articles {
+  margin-top: 30px;
+}
+
+.help-article {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-speed);
+}
+
+.help-article:last-child {
+  border-bottom: none;
+}
+
+.help-article:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.help-article h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+
+.help-article p {
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.help-article-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.help-article-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.help-feedback {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.help-feedback h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.help-feedback p {
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.feedback-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.feedback-button {
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  background-color: var(--background-light);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feedback-button:hover {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.popular-topics {
+  margin-top: 60px;
+}
+
+.popular-topics h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.topic-card {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px var(--shadow-color);
+  padding: 25px;
+  text-align: center;
+  transition: transform var(--transition-speed);
+}
+
+.topic-card:hover {
+  transform: translateY(-10px);
+}
+
+.topic-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-light);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin: 0 auto 20px;
+}
+
+.topic-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.topic-card p {
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+@media (max-width: 992px) {
+  .help-container {
+    grid-template-columns: 1fr;
+  }
+
+  .help-sidebar {
+    position: static;
+  }
+
+  .topics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .help-header h1 {
+    font-size: 2rem;
+  }
+
+  .topics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<header class="main-header">
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-content">
+        <div class="region-selector">
+          <a href="#" class="region-link">Россия</a>
+          <div class="region-dropdown">
+            <a href="#">Москва</a>
+            <a href="#">Санкт-Петербург</a>
+            <a href="#">Новосибирск</a>
+            <a href="#">Екатеринбург</a>
+            <a href="#">Казань</a>
+            <a href="#">Все города</a>
+          </div>
+        </div>
+        <nav class="top-nav">
+          <ul>
+            <li><a href="job-seekers.html">Соискателям</a></li>
+            <li><a href="employers.html" class="active">Работодателям</a></li>
+          </ul>
+        </nav>
+        <div class="top-services">
+          <a href="ready-resume.html">Готовое резюме</a>
+          <a href="career-consultation.html">Карьерная консультация</a>
+          <div class="services-dropdown">
+            <a href="#" class="services-link">Все сервисы <i class="fas fa-chevron-down"></i></a>
+            <div class="services-menu">
+              <a href="salary.html">Узнать зарплату</a>
+              <a href="career-advice.html">Карьерные советы</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-bar">
+    <div class="container">
+      <div class="main-bar-content">
+        <div class="logo">
+          <a href="index.html">
+            <span class="logo-icon">JH</span>
+            <span class="logo-text">JobHub</span>
+          </a>
+        </div>
+        <div class="auth-buttons">
+          <button id="theme-toggle-btn" class="theme-toggle-btn">
+              <i class="fas fa-sun theme-icon-light"></i>
+              <i class="fas fa-moon theme-icon-dark"></i>
+            </button>
+          <a href="post-job.html" class="btn btn-outline">Разместить вакансию</a>
+          <a href="login.html" class="btn btn-primary">Войти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="help-header">
+    <div class="container">
+      <h1>Центр помощи для работодателей</h1>
+      <p>Ответы на вопросы и руководства по использованию сервиса JobHub</p>
+      <div class="help-search">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Поиск по базе знаний">
+      </div>
+    </div>
+  </section>
+
+  <div class="help-content">
+    <div class="container">
+      <div class="help-container">
+        <aside class="help-sidebar">
+          <div class="help-categories">
+            <div class="help-category active">
+              <div class="help-category-title">
+                <span>Начало работы</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="help-subcategories">
+                <a href="#" class="help-subcategory active">Регистрация и вход</a>
+                <a href="#" class="help-subcategory">Настройка профиля компании</a>
+                <a href="#" class="help-subcategory">Выбор тарифного плана</a>
+                <a href="#" class="help-subcategory">Первые шаги</a>
+              </div>
+            </div>
+            <div class="help-category">
+              <div class="help-category-title">
+                <span>Размещение вакансий</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="help-subcategories">
+                <a href="#" class="help-subcategory">Создание вакансии</a>
+                <a href="#" class="help-subcategory">Редактирование вакансии</a>
+                <a href="#" class="help-subcategory">Продвижение вакансии</a>
+                <a href="#" class="help-subcategory">Массовое размещение</a>
+              </div>
+            </div>
+            <div class="help-category">
+              <div class="help-category-title">
+                <span>Работа с кандидатами</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="help-subcategories">
+                <a href="#" class="help-subcategory">Поиск резюме</a>
+                <a href="#" class="help-subcategory">Приглашение кандидатов</a>
+                <a href="#" class="help-subcategory">Управление откликами</a>
+                <a href="#" class="help-subcategory">Сохранение кандидатов</a>
+              </div>
+            </div>
+            <div class="help-category">
+              <div class="help-category-title">
+                <span>Оплата и счета</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="help-subcategories">
+                <a href="#" class="help-subcategory">Способы оплаты</a>
+                <a href="#" class="help-subcategory">Получение счетов</a>
+                <a href="#" class="help-subcategory">Закрывающие документы</a>
+                <a href="#" class="help-subcategory">Возврат средств</a>
+              </div>
+            </div>
+            <div class="help-category">
+              <div class="help-category-title">
+                <span>Аналитика и отчеты</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="help-subcategories">
+                <a href="#" class="help-subcategory">Статистика вакансий</a>
+                <a href="#" class="help-subcategory">Эффективность подбора</a>
+                <a href="#" class="help-subcategory">Экспорт данных</a>
+                <a href="#" class="help-subcategory">Настройка отчетов</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-support">
+            <h3>Нужна помощь?</h3>
+            <p>Свяжитесь с нашей службой поддержки</p>
+            <div class="contact-methods">
+              <a href="tel:+78001234567" class="contact-method">
+                <i class="fas fa-phone"></i>
+                <span>8 (800) 123-45-67</span>
+              </a>
+              <a href="mailto:support@jobhub.ru" class="contact-method">
+                <i class="fas fa-envelope"></i>
+                <span>support@jobhub.ru</span>
+              </a>
+              <a href="#" class="contact-method">
+                <i class="fas fa-comments"></i>
+                <span>Онлайн-чат</span>
+              </a>
+            </div>
+            <p>Время работы: Пн-Пт, 9:00 - 18:00</p>
+          </div>
+        </aside>
+
+        <div class="help-main">
+          <h2>Регистрация и вход</h2>
+          <p>На этой странице вы найдете информацию о том, как зарегистрироваться на платформе JobHub в качестве работодателя и начать поиск сотрудников.</p>
+
+          <div class="help-articles">
+            <div class="help-article">
+              <h3>Как зарегистрировать компанию на JobHub?</h3>
+              <p>Для регистрации компании на JobHub необходимо выполнить несколько простых шагов. Вы можете создать аккаунт работодателя, указав основную информацию о компании и контактные данные.</p>
+              <div class="help-article-meta">
+                <span><i class="far fa-clock"></i> Время чтения: 3 мин</span>
+                <a href="#" data-full-content="Для регистрации компании на JobHub необходимо выполнить несколько простых шагов. Вы можете создать аккаунт работодателя, указав основную информацию о компании и контактные данные.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Шаг 1: Создание аккаунта&lt;/strong&gt;&lt;br&gt;1. Перейдите на главную страницу JobHub и нажмите кнопку 'Войти'.&lt;br&gt;2. В открывшемся окне выберите 'Зарегистрироваться как работодатель'.&lt;br&gt;3. Заполните форму регистрации, указав email и пароль.&lt;br&gt;4. Подтвердите email, перейдя по ссылке в письме, которое придет на указанный адрес.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Шаг 2: Заполнение профиля компании&lt;/strong&gt;&lt;br&gt;1. После подтверждения email войдите в систему и перейдите в раздел 'Профиль компании'.&lt;br&gt;2. Заполните основную информацию о компании: название, сфера деятельности, размер компании, год основания, описание.&lt;br&gt;3. Загрузите логотип компании и фотографии офиса (опционально).&lt;br&gt;4. Укажите контактные данные и адрес компании.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Шаг 3: Верификация компании&lt;/strong&gt;&lt;br&gt;1. Для полной верификации компании необходимо предоставить документы, подтверждающие юридический статус вашей организации.&lt;br&gt;2. Загрузите сканы или фотографии необходимых документов в разделе 'Верификация'.&lt;br&gt;3. Дождитесь проверки документов нашими специалистами (обычно это занимает 1-2 рабочих дня).&lt;br&gt;&lt;br&gt;&lt;strong&gt;Шаг 4: Выбор тарифного плана&lt;/strong&gt;&lt;br&gt;1. После верификации компании выберите подходящий тарифный план в разделе 'Тарифы'.&lt;br&gt;2. Оплатите выбранный тариф удобным способом.&lt;br&gt;3. После оплаты вы получите доступ ко всем функциям платформы в соответствии с выбранным тарифом.&lt;br&gt;&lt;br&gt;После выполнения всех шагов вы сможете размещать вакансии, искать кандидатов и использовать другие возможности платформы JobHub для работодателей.">Читать полностью</a>
+              </div>
+            </div>
+
+            <div class="help-article">
+              <h3>Какие документы нужны для регистрации компании?</h3>
+              <p>Для регистрации компании на JobHub вам потребуются определенные документы, подтверждающие юридический статус вашей организации. В этой статье мы расскажем, какие документы необходимо подготовить.</p>
+              <div class="help-article-meta">
+                <span><i class="far fa-clock"></i> Время чтения: 4 мин</span>
+                <a href="#" data-full-content="Для регистрации компании на JobHub вам потребуются определенные документы, подтверждающие юридический статус вашей организации. В этой статье мы расскажем, какие документы необходимо подготовить.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Для юридических лиц (ООО, АО и т.д.):&lt;/strong&gt;&lt;br&gt;1. Свидетельство о государственной регистрации юридического лица (ОГРН)&lt;br&gt;2. Свидетельство о постановке на учет в налоговом органе (ИНН)&lt;br&gt;3. Устав организации&lt;br&gt;4. Документ, подтверждающий полномочия руководителя (протокол/решение о назначении)&lt;br&gt;5. Выписка из ЕГРЮЛ (не старше 30 дней)&lt;br&gt;&lt;br&gt;&lt;strong&gt;Для индивидуальных предпринимателей:&lt;/strong&gt;&lt;br&gt;1. Свидетельство о государственной регистрации физического лица в качестве ИП (ОГРНИП)&lt;br&gt;2. Свидетельство о постановке на учет в налоговом органе (ИНН)&lt;br&gt;3. Выписка из ЕГРИП (не старше 30 дней)&lt;br&gt;4. Паспорт (основная страница и страница с регистрацией)&lt;br&gt;&lt;br&gt;&lt;strong&gt;Для представительств иностранных компаний:&lt;/strong&gt;&lt;br&gt;1. Свидетельство о регистрации представительства&lt;br&gt;2. Свидетельство о постановке на учет в налоговом органе&lt;br&gt;3. Документ, подтверждающий полномочия руководителя представительства&lt;br&gt;4. Документы, подтверждающие юридический статус головной компании в стране регистрации&lt;br&gt;&lt;br&gt;&lt;strong&gt;Дополнительные документы (могут потребоваться в некоторых случаях):&lt;/strong&gt;&lt;br&gt;1. Лицензии на осуществление определенных видов деятельности&lt;br&gt;2. Сертификаты и разрешения&lt;br&gt;3. Доверенность на представителя компании (если регистрацию осуществляет не руководитель)&lt;br&gt;&lt;br&gt;Все документы должны быть предоставлены в виде сканов или четких фотографий. Документы на иностранных языках должны быть переведены на русский язык и заверены нотариально.&lt;br&gt;&lt;br&gt;После загрузки документов наши специалисты проведут проверку и свяжутся с вами для подтверждения регистрации или запроса дополнительной информации.">Читать полностью</a>
+              </div>
+            </div>
+
+            <div class="help-article">
+              <h3>Как восстановить доступ к аккаунту работодателя?</h3>
+              <p>Если вы забыли пароль или у вас возникли проблемы с доступом к аккаунту работодателя, вы можете воспользоваться функцией восстановления доступа. В этой статье мы подробно расскажем о процессе восстановления.</p>
+              <div class="help-article-meta">
+                <span><i class="far fa-clock"></i> Время чтения: 2 мин</span>
+                <a href="#" data-full-content="Если вы забыли пароль или у вас возникли проблемы с доступом к аккаунту работодателя, вы можете воспользоваться функцией восстановления доступа. В этой статье мы подробно расскажем о процессе восстановления.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Восстановление доступа через email:&lt;/strong&gt;&lt;br&gt;1. На странице входа нажмите на ссылку 'Забыли пароль?'&lt;br&gt;2. Введите email, указанный при регистрации&lt;br&gt;3. Нажмите кнопку 'Восстановить доступ'&lt;br&gt;4. На указанный email будет отправлено письмо с инструкциями по восстановлению доступа&lt;br&gt;5. Перейдите по ссылке из письма и создайте новый пароль&lt;br&gt;&lt;br&gt;&lt;strong&gt;Восстановление доступа через телефон:&lt;/strong&gt;&lt;br&gt;1. На странице входа нажмите на ссылку 'Забыли пароль?'&lt;br&gt;2. Выберите вкладку 'Телефон'&lt;br&gt;3. Введите номер телефона, указанный при регистрации&lt;br&gt;4. Нажмите кнопку 'Получить код'&lt;br&gt;5. Введите код, полученный в SMS&lt;br&gt;6. Создайте новый пароль&lt;br&gt;&lt;br&gt;&lt;strong&gt;Если у вас нет доступа к email или телефону:&lt;/strong&gt;&lt;br&gt;1. Свяжитесь с нашей службой поддержки по телефону 8 (800) 123-45-67&lt;br&gt;2. Подготовьте документы, подтверждающие ваше право на доступ к аккаунту компании&lt;br&gt;3. Следуйте инструкциям специалиста поддержки&lt;br&gt;&lt;br&gt;&lt;strong&gt;Дополнительные рекомендации:&lt;/strong&gt;&lt;br&gt;1. Используйте надежные пароли, содержащие буквы, цифры и специальные символы&lt;br&gt;2. Не используйте один и тот же пароль для разных сервисов&lt;br&gt;3. Регулярно обновляйте пароль&lt;br&gt;4. Настройте двухфакторную аутентификацию для дополнительной защиты аккаунта">Читать полностью</a>
+              </div>
+            </div>
+
+            <div class="help-article">
+              <h3>Как добавить нескольких пользователей к аккаунту компании?</h3>
+              <p>JobHub позволяет добавлять нескольких пользователей к одному аккаунту компании с разными уровнями доступа. Это удобно для крупных организаций, где несколько HR-специалистов работают с платформой.</p>
+              <div class="help-article-meta">
+                <span><i class="far fa-clock"></i> Время чтения: 5 мин</span>
+                <a href="#" data-full-content="JobHub позволяет добавлять нескольких пользователей к одному аккаунту компании с разными уровнями доступа. Это удобно для крупных организаций, где несколько HR-специалистов работают с платформой.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Шаг 1: Настройка ролей пользователей&lt;/strong&gt;&lt;br&gt;1. Войдите в аккаунт компании с правами администратора&lt;br&gt;2. Перейдите в раздел 'Настройки' -&gt; 'Управление пользователями'&lt;br&gt;3. Нажмите на кнопку 'Настроить роли'&lt;br&gt;4. Создайте необходимые роли с соответствующими правами доступа&lt;br&gt;5. Сохраните настройки&lt;br&gt;&lt;br&gt;&lt;strong&gt;Шаг 2: Добавление новых пользователей&lt;/strong&gt;&lt;br&gt;1. В разделе 'Управление пользователями' нажмите кнопку 'Добавить пользователя'&lt;br&gt;2. Заполните форму, указав email, имя и фамилию нового пользователя&lt;br&gt;3. Выберите роль для нового пользователя&lt;br&gt;4. Нажмите кнопку 'Пригласить'&lt;br&gt;5. На указанный email будет отправлено приглашение с инструкциями по активации аккаунта&lt;br&gt;&lt;br&gt;&lt;strong&gt;Шаг 3: Управление существующими пользователями&lt;/strong&gt;&lt;br&gt;1. В списке пользователей вы можете видеть всех пользователей, имеющих доступ к аккаунту компании&lt;br&gt;2. Для каждого пользователя доступны следующие действия:&lt;br&gt;   - Изменение роли&lt;br&gt;   - Блокировка/разблокировка доступа&lt;br&gt;   - Удаление пользователя&lt;br&gt;3. Для изменения настроек пользователя нажмите на иконку 'Редактировать' рядом с его именем&lt;br&gt;&lt;br&gt;&lt;strong&gt;Доступные роли и их права:&lt;/strong&gt;&lt;br&gt;1. &lt;strong&gt;Администратор&lt;/strong&gt; - полный доступ ко всем функциям аккаунта, включая управление пользователями и тарифными планами&lt;br&gt;2. &lt;strong&gt;HR-менеджер&lt;/strong&gt; - доступ к размещению и редактированию вакансий, работе с откликами, поиску резюме&lt;br&gt;3. &lt;strong&gt;Рекрутер&lt;/strong&gt; - доступ к работе с вакансиями и откликами, поиску резюме&lt;br&gt;4. &lt;strong&gt;Наблюдатель&lt;/strong&gt; - доступ только для просмотра информации без возможности внесения изменений&lt;br&gt;&lt;br&gt;&lt;strong&gt;Ограничения:&lt;/strong&gt;&lt;br&gt;1. Количество пользователей зависит от выбранного тарифного плана&lt;br&gt;2. Тарифный план 'Базовый' - до 3 пользователей&lt;br&gt;3. Тарифный план 'Стандарт' - до 10 пользователей&lt;br&gt;4. Тарифный план 'Премиум' - неограниченное количество пользователей&lt;br&gt;&lt;br&gt;Для увеличения лимита пользователей вы можете перейти на более высокий тарифный план в разделе 'Тарифы'.">Читать полностью</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="help-feedback">
+            <h3>Была ли эта информация полезной?</h3>
+            <p>Помогите нам улучшить наш центр помощи</p>
+            <div class="feedback-buttons">
+              <button class="feedback-button"><i class="fas fa-thumbs-up"></i> Да, полезно</button>
+              <button class="feedback-button"><i class="fas fa-thumbs-down"></i> Нет, не помогло</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="popular-topics">
+        <h2>Популярные темы</h2>
+        <div class="topics-grid">
+          <div class="topic-card">
+            <div class="topic-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <h3>Размещение вакансий</h3>
+            <p>Узнайте, как создавать эффективные описания вакансий, которые привлекут подходящих кандидатов</p>
+            <a href="#" class="btn btn-outline">Подробнее</a>
+          </div>
+
+          <div class="topic-card">
+            <div class="topic-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>Поиск резюме</h3>
+            <p>Советы по эффективному поиску кандидатов в базе резюме с использованием фильтров и ключевых слов</p>
+            <a href="#" class="btn btn-outline">Подробнее</a>
+          </div>
+
+          <div class="topic-card">
+            <div class="topic-icon">
+              <i class="fas fa-credit-card"></i>
+            </div>
+            <h3>Тарифы и оплата</h3>
+            <p>Информация о тарифных планах, способах оплаты и получении закрывающих документов</p>
+            <a href="#" class="btn btn-outline">Подробнее</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="logo-icon">JH</span>
+        <span class="logo-text">JobHub</span>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Соискателям</h4>
+          <ul>
+            <li><a href="search-jobs.html">Поиск вакансий</a></li>
+            <li><a href="create-resume.html">Создать резюме</a></li>
+            <li><a href="career-advice.html">Карьерные советы</a></li>
+            <li><a href="salary.html">Узнать зарплату</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Работодателям</h4>
+          <ul>
+            <li><a href="post-job.html">Разместить вакансию</a></li>
+            <li><a href="search-resumes.html">Поиск резюме</a></li>
+            <li><a href="employer-services.html">Услуги и цены</a></li>
+            <li><a href="employer-help.html">Помощь</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>JobHub</h4>
+          <ul>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="terms.html">Пользовательское соглашение</a></li>
+            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Приложение</h4>
+          <div class="app-buttons">
+            <a href="#" class="app-button">
+              <i class="fab fa-apple"></i>
+              <span>App Store</span>
+            </a>
+            <a href="#" class="app-button">
+              <i class="fab fa-google-play"></i>
+              <span>Google Play</span>
+            </a>
+          </div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+        © 2025 JobHub. Все права защищены.
+
+        <a href="tel:+375293334192" style="color: white"> +375293334192</a>
+
+        <a href="https://www.google.com/maps/place/Google+London+-+Central+Saint+Giles/@64.5404623,-21.9133212,1604m/data=!3m1!1e3!4m6!3m5!1s0x4876051f55732655:0x77d00e13ac2579f8!8m2!3d51.5160322!4d-0.1271091!16s%2Fg%2F1tdy3_0c?entry=ttu&g_ep=EgoyMDI1MDUwNy4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" style="color: white">
+          Адрес</a>
+        <p></p>
+
+      </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script src="js/employer-help.js"></script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+/* Стили для кнопки переключения темы */
+.theme-toggle-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: none;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--background-light);
+  transform: scale(1.05);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* Иконки темы */
+.theme-icon-light,
+.theme-icon-dark {
+  position: absolute;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+/* В светлой теме показываем иконку луны */
+body:not(.dark) .theme-icon-light {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+body:not(.dark) .theme-icon-dark {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* В темной теме показываем иконку солнца */
+body.dark .theme-icon-light {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.dark .theme-icon-dark {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Добавляем анимацию при переключении темы */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle-btn::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.theme-toggle-btn:active::after {
+  opacity: 0.2;
+  transform: scale(1);
+}
+
+/* Адаптивные стили для разных устройств */
+/* Большие экраны (десктопы) */
+@media (min-width: 1200px) {
+  .theme-toggle-btn {
+    width: 44px;
+    height: 44px;
+    margin-right: 20px;
+  }
+
+  .theme-icon-light,
+  .theme-icon-dark {
+    font-size: 1.3rem;
+  }
+}
+
+/* Средние экраны (ноутбуки) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .theme-toggle-btn {
+    width: 42px;
+    height: 42px;
+    margin-right: 18px;
+  }
+}
+
+/* Планшеты */
+@media (max-width: 991px) and (min-width: 768px) {
+  .theme-toggle-btn {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 767px) {
+  .theme-toggle-btn {
+    width: 38px;
+    height: 38px;
+    margin-right: 12px;
+  }
+
+  .theme-icon-light,
+  .theme-icon-dark {
+    font-size: 1.1rem;
+  }
+
+  /* Стили для кнопки в мобильном меню */
+  .mobile-auth-buttons .theme-toggle-btn {
+    margin: 0 auto 15px;
+    width: 40px;
+    height: 40px;
+    border-width: 2px;
+  }
+
+  .mobile-auth-buttons .theme-icon-light,
+  .mobile-auth-buttons .theme-icon-dark {
+    font-size: 1.2rem;
+  }
+}
+
+/* Маленькие мобильные устройства */
+@media (max-width: 480px) {
+  .theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+  }
+
+  .theme-icon-light,
+  .theme-icon-dark {
+    font-size: 1rem;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 320px) {
+  .theme-toggle-btn {
+    width: 34px;
+    height: 34px;
+    margin-right: 8px;
+  }
+
+  .auth-buttons {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Стили для ландшафтной ориентации на мобильных */
+@media (max-height: 480px) and (orientation: landscape) {
+  .theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mobile-auth-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .mobile-auth-buttons .theme-toggle-btn {
+    margin: 0;
+  }
+}
+
+/* Поддержка высокой плотности пикселей (Retina дисплеи) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .theme-toggle-btn {
+    border-width: 1.5px;
+  }
+}
+
+/* Стили для устройств с поддержкой hover */
+@media (hover: hover) {
+  .theme-toggle-btn:hover {
+    background-color: var(--background-light);
+    transform: scale(1.05);
+  }
+}
+
+/* Стили для устройств без поддержки hover (сенсорные экраны) */
+@media (hover: none) {
+  .theme-toggle-btn:active {
+    background-color: var(--background-light);
+  }
+}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobHub - Найдите работу своей мечты</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/theme-toggle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar-content">
+           <section class="region-selector">
+             <h2></h2>
+          <a href="#" class="region-link">Россия</a>
+          <nav class="region-dropdown">
+            <a href="#">Москва</a>
+            <a href="#">Санкт-Петербург</a>
+            <a href="#">Новосибирск</a>
+            <a href="#">Екатеринбург</a>
+            <a href="#">Казань</a>
+            <a href="#">Все города</a>
+          </nav>
+        </section>
+          <nav class="top-nav">
+            <ul>
+              <li><a href="job-seekers.html" class="active">Соискателям</a></li>
+              <li><a href="employers.html">Работодателям</a></li>
+            </ul>
+          </nav>
+          <nav class="top-services">
+          <a href="ready-resume.html">Готовое резюме</a>
+          <a href="career-consultation.html">Карьерная консультация</a>
+          <section class="services-dropdown">
+            <h2></h2>
+            <a href="#" class="services-link">Все сервисы <i class="fas fa-chevron-down"></i></a>
+            <nav class="services-menu">
+              <a href="salary.html">Узнать зарплату</a>
+              <a href="career-advice.html">Карьерные советы</a>
+            </nav>
+          </section>
+        </nav>
+        </div>
+      </div>
+    </div>
+    <div class="main-bar">
+      <div class="container">
+        <div class="main-bar-content">
+          <div class="logo">
+            <a href="index.html">
+              <span class="logo-icon">JH</span>
+              <span class="logo-text">JobHub</span>
+            </a>
+          </div>
+          <div class="auth-buttons">
+            <button id="theme-toggle-btn" class="theme-toggle-btn">
+              <i class="fas fa-sun theme-icon-light"></i>
+              <i class="fas fa-moon theme-icon-dark"></i>
+            </button>
+            <a href="create-resume.html" class="btn btn-outline">Создать резюме</a>
+            <a href="login.html" class="btn btn-primary">Войти</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Работа найдётся для каждого</h1>
+            <div class="search-form">
+              <div class="search-input-wrapper">
+                <i class="fas fa-search"></i>
+                <label>
+                  <input type="text" placeholder="Профессия, должность или компания" class="search-input">
+                </label>
+              </div>
+              <button type="submit" class="btn btn-search">Найти</button>
+              <button type="button" class="btn btn-filters">
+                <i class="fas fa-sliders-h"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Карусель изображений -->
+          <div class="carousel-container">
+            <div class="carousel">
+              <div class="carousel-slide active">
+                <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Мобильное приложение JobHub">
+              </div>
+              <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1586473219010-2ffc57b0d282?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Работа в офисе">
+              </div>
+              <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Удаленная работа">
+              </div>
+            </div>
+            <div class="carousel-controls">
+              <button class="carousel-control prev"><i class="fas fa-chevron-left"></i></button>
+              <div class="carousel-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+              </div>
+              <button class="carousel-control next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="app-promo">
+          <p>Новая социальная сеть для нетворкинга от JobHub</p>
+          <a href="" class="app-download-link">Скачать приложение</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="phone-verification">
+      <div class="container">
+        <div class="verification-card">
+          <div class="verification-logo">
+            <span class="logo-icon">JH</span>
+          </div>
+          <div class="verification-content">
+            <h2>Напишите телефон, чтобы работодатели могли предложить вам работу</h2>
+            <div class="verification-form">
+              <label>
+                <input type="tel" placeholder="Номер телефона" class="phone-input">
+              </label>
+              <button class="btn btn-primary">Продолжить</button>
+            </div>
+            <p class="terms-text">
+              Нажимая «Продолжить», вы подтверждаете, что полностью принимаете условия
+              <a href="terms.html">Соглашения об оказании услуг по содействию в трудоустройстве</a>
+              и ознакомились с
+              <a href="privacy.html">политикой конфиденциальности</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="job-categories">
+      <div class="container">
+        <div class="categories-grid">
+          <div class="category-card">
+            <h3>Вакансии дня</h3>
+            <p class="salary-range">65 000 — 180 000 ₽</p>
+            <div class="job-list">
+              <a href="job-details.html" class="job-item">
+                <h4>Frontend-разработчик</h4>
+                <p>ООО "ТехСтарт"</p>
+                <span class="salary">от 120 000 ₽</span>
+              </a>
+              <a href="job-details.html" class="job-item">
+                <h4>Менеджер по продажам</h4>
+                <p>ООО "ТоргПлюс"</p>
+                <span class="salary">80 000 — 150 000 ₽</span>
+              </a>
+              <a href="job-details.html" class="job-item">
+                <h4>Бухгалтер</h4>
+                <p>ЗАО "ФинансГрупп"</p>
+                <span class="salary">65 000 — 90 000 ₽</span>
+              </a>
+            </div>
+            <a href="search-jobs.html" class="view-all">Смотреть все вакансии</a>
+          </div>
+          <div class="category-card">
+            <h3>Компании дня</h3>
+            <div class="company-list">
+              <a href="search-jobs.html" class="company-item">
+                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Логотип компании" class="company-logo">
+                <div class="company-info">
+                  <h4>ООО "ТехСтарт"</h4>
+                  <p>IT и разработка</p>
+                </div>
+              </a>
+              <a href="search-jobs.html" class="company-item">
+                <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Логотип компании" class="company-logo">
+                <div class="company-info">
+                  <h4>ООО "ТоргПлюс"</h4>
+                  <p>Продажи</p>
+                </div>
+              </a>
+              <a href="search-jobs.html" class="company-item">
+                <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Логотип компании" class="company-logo">
+                <div class="company-info">
+                  <h4>ЗАО "ФинансГрупп"</h4>
+                  <p>Финансы и бухгалтерия</p>
+                </div>
+              </a>
+            </div>
+            <a href="search-jobs.html" class="view-all">Смотреть все компании</a>
+          </div>
+          <div class="category-card">
+            <h3>Работа из дома</h3>
+            <div class="job-list">
+              <a href="job-details.html" class="job-item">
+                <h4>Удаленный контент-менеджер</h4>
+                <p>ООО "МедиаХаб"</p>
+                <span class="salary">от 60 000 ₽</span>
+              </a>
+              <a href="job-details.html" class="job-item">
+                <h4>Дизайнер интерфейсов</h4>
+                <p>ООО "ДизайнПро"</p>
+                <span class="salary">90 000 — 120 000 ₽</span>
+              </a>
+              <a href="job-details.html" class="job-item">
+                <h4>Менеджер по работе с клиентами</h4>
+                <p>ООО "КлиентСервис"</p>
+                <span class="salary">70 000 — 100 000 ₽</span>
+              </a>
+            </div>
+            <a href="search-jobs.html" class="view-all">Смотреть все удаленные вакансии</a>
+          </div>
+          <div class="category-card">
+            <h3>Продавец-консультант в свадебный салон</h3>
+            <div class="job-details-mini">
+              <p class="salary-highlight">от 80 000 ₽</p>
+              <p class="company-name">Свадебный салон "Белый Ангел"</p>
+              <ul class="job-features">
+                <li>Гибкий график</li>
+                <li>Опыт от 1 года</li>
+                <li>Оформление по ТК</li>
+              </ul>
+            </div>
+            <a href="job-details.html" class="view-job">Подробнее о вакансии</a>
+          </div>
+          <div class="category-card">
+            <h3>Личный водитель собственника компании</h3>
+            <div class="job-details-mini">
+              <p class="salary-highlight">от 130 000 ₽</p>
+              <p class="company-name">ООО "БизнесТранс"</p>
+              <ul class="job-features">
+                <li>Полный рабочий день</li>
+                <li>Опыт от 3 лет</li>
+                <li>Премии и бонусы</li>
+              </ul>
+            </div>
+            <a href="job-details.html" class="view-job">Подробнее о вакансии</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="logo-icon">JH</span>
+          <span class="logo-text">JobHub</span>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Соискателям</h4>
+            <ul>
+              <li><a href="search-jobs.html">Поиск вакансий</a></li>
+              <li><a href="create-resume.html">Создать резюме</a></li>
+              <li><a href="career-advice.html">Карьерные советы</a></li>
+              <li><a href="salary.html">Узнать зарплату</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Работодателям</h4>
+            <ul>
+              <li><a href="post-job.html">Разместить вакансию</a></li>
+              <li><a href="search-resumes.html">Поиск резюме</a></li>
+              <li><a href="employer-services.html">Услуги и цены</a></li>
+              <li><a href="employer-help.html">Помощь</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>JobHub</h4>
+            <ul>
+              <li><a href="about.html">О компании</a></li>
+              <li><a href="contacts.html">Контакты</a></li>
+              <li><a href="terms.html">Пользовательское соглашение</a></li>
+              <li><a href="privacy.html">Политика конфиденциальности</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Приложение</h4>
+            <div class="app-buttons">
+              <a href="#" class="app-button">
+                <i class="fab fa-apple"></i>
+                <span>App Store</span>
+              </a>
+              <a href="#" class="app-button">
+                <i class="fab fa-google-play"></i>
+                <span>Google Play</span>
+              </a>
+            </div>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-vk"></i></a>
+              <a href="#"><i class="fab fa-telegram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2023 JobHub. Все права защищены.
+
+        <a href="tel:+375293334192" style="color: white"> +375293334192</a>
+
+        <a href="https://www.google.com/maps/place/Google+London+-+Central+Saint+Giles/@64.5404623,-21.9133212,1604m/data=!3m1!1e3!4m6!3m5!1s0x4876051f55732655:0x77d00e13ac2579f8!8m2!3d51.5160322!4d-0.1271091!16s%2Fg%2F1tdy3_0c?entry=ttu&g_ep=EgoyMDI1MDUwNy4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" style="color: white">
+          Адрес</a>
+        <p></p>
+
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
